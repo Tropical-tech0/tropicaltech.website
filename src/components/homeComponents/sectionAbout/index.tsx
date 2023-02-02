@@ -3,6 +3,7 @@ import styles from './index.module.css'
 
 //components
 import CardContact from '@/components/cardContact'
+import Teste from '@/components/teste/teste'
 
 type ICard = {
     imgUrl: string,
@@ -58,7 +59,7 @@ const SectionAbout: React.FC = () => {
             <div className={styles.card_contact}>
                 
                 <CardContact/>
-
+                {/* <Teste/> */}
             </div>
 
 

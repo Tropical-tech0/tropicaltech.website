@@ -13,7 +13,9 @@ const Contact: React.FC = () => {
     </Head>
     <Navbar/>
     <main>
-
+      <div style={{height: '400px'}}>
+        
+      </div>
     </main>
     <Footer/>
     </>

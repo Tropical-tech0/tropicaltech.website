@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+
+.contact_card{
+    width: auto;
+    height: auto;
+    margin: 150px 0;
+}
+
+.img_card{
+    background-image: url(/img/code-blur.png);
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    height: 400px;
+    transition: 3s;
+    position: relative;
+    filter: brightness(100%);
+}
+
+
+.img_card:hover{
+    background-size: 150%;
+    filter: brightness(60%);
+}
+
+.info_card{
+    background-color: #F7F7F7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+    font-style: normal;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info_card h4{
+    font-family: "Raleway", sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 33px;
+    color: #000000;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.info_card p{
+    text-align: center;
+    color: #55595c;
+    font-size: 15px;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+.info_card a{
+    padding: 15px 35px;
+    background-color: #0B6263;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.info_card a:hover{
+    background-color:  #0b6163d0;   
+    text-decoration: underline;
+}
+@media screen and (max-width: 480px) {
+    .contact_card{
+        max-width: 100%;
+        width: 100%;
+    }
+}

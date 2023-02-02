@@ -5,7 +5,10 @@ import styles from './index.module.css'
 //button link to contact whatsapp
 const WhatsappButton = () => {
     return (
-        <a className={styles.whatsapp_button} href="https://wa.link/6vvx11">
+        <a
+            className={styles.whatsapp_button} href="https://wa.link/6vvx11"
+            aria-label="Open WhatsApp chat"
+        >
             <span>
                 <Image
                     src={"/img/icons-button/whatsapp.png"}
@@ -14,7 +17,7 @@ const WhatsappButton = () => {
                     height={14}
                 />
                 <p>ENTRE EM CONTATO!</p>
-                <h6 style={{fontSize: "16px"}}>&#128515;</h6>
+                <h6 style={{ fontSize: "16px" }}>&#128515;</h6>
             </span>
         </a>
     )

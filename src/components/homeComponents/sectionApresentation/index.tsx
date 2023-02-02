@@ -32,12 +32,12 @@ const SectionApresentation = () => {
     }, [])
 
     return (
-        <section ref={section} className={styles.apresentation_section}>
+        <section ref={section} className={styles.apresentation_section} aria-labelledby="presentation_header">
             <div ref={background_content} className={styles.background_content}></div>
             <div className={styles.into_card}>
-                <h4>SEJA BEM-VINDO À TROPICAL TECH</h4>
+                <h4 id="presentation_header">SEJA BEM-VINDO À TROPICAL TECH</h4>
                 <span>
-                    <h5>
+                    <h5 id="presentation_text">
                         Somos uma software house, nosso time de desenvolvedores,
                         designers e estrategistas estão prontos para transformar seu negócio
                     </h5>
@@ -47,7 +47,7 @@ const SectionApresentation = () => {
             <div className={styles.into_image}>
                 <img
                     src="/img/design-cell-home.png"
-                    alt="design-cell"
+                    alt="Tropical Tech app design on a cell phone"
                     width={"90%"}
                     style={{ minWidth: '250px' }}
                 />
