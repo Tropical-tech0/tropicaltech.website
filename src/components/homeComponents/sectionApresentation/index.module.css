@@ -1,0 +1,94 @@
+/* first section */
+.apresentation_section{
+    height: 850px;
+    width: 100%;
+    background-image: url(/img/background-one-home.jpg);
+    background-attachment:fixed ;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.background_content{
+    position: absolute;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.5s ease-out;
+}
+
+.into_card, .into_image{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    animation: showCard 1s ease-out;
+}
+
+@keyframes showCard{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.into_card h4, .into_image img{
+    margin-top: 150px;
+}
+
+.into_card {
+    display: flex;
+    flex-direction: column;
+    padding: 0 100px;
+    gap: 1.5rem;
+}
+.into_card h5{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+    color: rgba(255, 255, 255, 0.59);
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    width: 350px;
+}
+
+.apresentation_section .into_card h4{
+    font-family: "Raleway", sans-serif;
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 1em;
+    font-style: normal;
+    color: #ffff;
+    width: 100%;
+    text-align: left;
+}
+
+/**/
+@media screen and (max-width: 740px){/*consertar responsividade*/
+    .apresentation_section{
+        flex-wrap: wrap;
+        height: auto;
+    }
+    .apresentation_section .into_image img{
+        margin-top: 50px;
+        margin-left: 30px;
+    }
+    .into_card{
+        padding: 0 50px;
+        align-items: center;
+    }
+    .apresentation_section .into_card h5{
+        text-align: center;
+    }
+    .apresentation_section .into_card h4{
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,30 @@
+.writing_component{
+    display: flex;
+    justify-content: center;
+}
+.writing_component h4{
+    margin: 0;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 27px;
+    color: #141414;
+    line-height: 30px;
+    font-family: "Raleway", sans-serif;
+    text-align: center;
+    letter-spacing: 2px;
+}
+.writing_component span{
+    height: 25px;
+    width: 4px;
+    background-color: #141414;
+    animation: cursorEffect 200ms alternate infinite;
+}
+
+@keyframes cursorEffect{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

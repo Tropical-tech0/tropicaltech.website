@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+
+.apresentation_section{
+    background-image: url(/img/code-background.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.background_content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, .7); */
+    background-image: linear-gradient(to top, rgba(0, 0, 0, .8) 90%, rgba(0, 0, 0, .5));
+    z-index: 1;
+}
+
+.apresentation_title{
+    flex: 1;
+    font-style: normal;
+    margin-top: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 100px;
+    padding-top: 200px;
+    padding-bottom: 100px;
+    z-index: 10;
+    max-height: 500px;
+}
+.apresentation_section p{
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 30px;
+    color: #ffff;
+    text-align: center;
+    letter-spacing: 4px;
+}
+
+.scroll_icon{
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px;
+}
+.scroll_icon .icon{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.scroll_icon .icon h4{
+    color: #ffff;
+    font-size: 23px;
+    line-height: 25px;
+    font-family: sans-serif;
+}
+.scroll_icon .icon img{
+    transform: rotate(90deg);
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (max-width: 530px) {
+    .apresentation_title{
+        padding: 60px 20px;
+    }
+}

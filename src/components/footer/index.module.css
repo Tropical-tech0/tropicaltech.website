@@ -1,0 +1,77 @@
+.footer_component{
+    background-color: #0C0C0C;
+    width: 100%;
+    padding: 25px 0;
+    position: relative;
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0% 100%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.img_card{
+    width: auto;
+    flex: .4;
+    display: flex;
+    justify-content: flex-end;
+}
+.img_card img{
+    width: 300px;
+    height: 300px;
+}
+
+.cards{
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 50px;
+}
+
+.info_card{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+    font-style: normal;
+}
+
+.info_card h4{
+    font-family: "Raleway", sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 18px;
+    color: #ffff;
+    letter-spacing: 2px;
+}
+.info_card div{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.info_card p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #666666;
+}
+
+.__line__{
+    position: absolute;
+    bottom: 7%;
+    height: 1px;
+    width: 90%;
+    background-color: #8080803a;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media screen and (max-width: 970px) {
+    .footer_component{
+        flex-direction: column;
+    }
+    .cards{
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .__line__{
+        display: none;
+    }
+}
