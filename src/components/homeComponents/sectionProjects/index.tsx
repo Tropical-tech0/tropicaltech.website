@@ -43,7 +43,7 @@ const SectionProjects: React.FC = () => {
             <span key={index}>
               <div className={styles.card_img} 
                 style={{
-                  backgroundImage: `url(http://localhost:3000${project.url})`
+                  backgroundImage: `url(${project.url})`
                 }}
               >
                 {/* <img src={project.url} alt={project.title} /> */}

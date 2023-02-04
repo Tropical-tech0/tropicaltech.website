@@ -1,0 +1,122 @@
+/* card two */
+.card{
+    background-color: #0B6263;
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+    color: #ffff;
+    position: relative;
+    overflow: hidden;
+    height: 320px;
+}
+
+.card_top,
+.card_bottom {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out
+}
+
+.card_top .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0;
+}
+
+.card_top .logo h4 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.card_top p {
+    text-align: center;
+    padding: 20px 50px;
+    padding-bottom: 20px;
+}
+
+/* card bottom */
+.card_bottom {
+    transform: translateY(100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    gap: 1rem;
+}
+
+.card_bottom span {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card_bottom h4 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.card_bottom span p {
+    padding: 0;
+    text-align: center;
+}
+
+.card_bottom button {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 2px solid #ffff;
+    background: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+    line-height: 15px;
+    font-size: 15px;
+    color: #ffff;
+    border-radius: 4px;
+    margin-top: 10px;
+    transition: 500ms;
+}
+.card_bottom button:hover{
+    background-color: #ffffff94;
+}
+
+
+.card:hover .card_top {
+    transform: translateY(-100%);
+}
+
+.card:hover .card_bottom {
+    transform: translateY(0);
+}
+
+@media screen and (max-width: 1080px){
+    .card{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .card{
+        height: 340px;
+    }
+}
+
+@media screen and (max-width: 630px){
+    .card{
+        height: 400px;
+    }
+    .card_top p{
+        padding: 0;
+    }
+}
