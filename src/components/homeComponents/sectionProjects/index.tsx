@@ -7,6 +7,7 @@ type IProject = {
   description: string
 }
 
+//projects data
 const projects: IProject[] = [
   {
     url: '/img/projects/img-kokua.png', 
@@ -30,9 +31,10 @@ const projects: IProject[] = [
   },
 ]
 
+//projects section - home page
 const SectionProjects: React.FC = () => {
   return (
-    <div className={styles.projects_section}>
+    <section className={styles.projects_section}>
       <div className={styles.header}>
         <h4>CONSTRUA E TRANSFORME SEUS NEGÓCIOS POR MEIO DE ESTRATÉGIA, DESIGN E DESENVOLVIMENTO DE APLICATIVOS WEB E MOBILE</h4>
         <p>Veja alguns de nossos projetos</p>
@@ -56,7 +58,7 @@ const SectionProjects: React.FC = () => {
           ))
         }
       </div>
-    </div>
+    </section>
   )
 }
 

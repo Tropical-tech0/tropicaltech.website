@@ -7,6 +7,7 @@ import Footer from '@/components/footer'
 import SectionApresentation from '@/components/terceirizacaoComponents/sectionApresentation'
 import SectionResources from '@/components/terceirizacaoComponents/sectionResources'
 import SectionServices from '@/components/terceirizacaoComponents/sectionServices'
+import SectionCarousel from '@/components/terceirizacaoComponents/sectionCarousel'
 
 const Terceirizacao = () => {
   return (
@@ -20,6 +21,7 @@ const Terceirizacao = () => {
       <SectionApresentation/>
       <SectionResources/>
       <SectionServices/>
+      <SectionCarousel/>
 
     </main>
     <Footer/>

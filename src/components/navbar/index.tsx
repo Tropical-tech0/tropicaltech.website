@@ -6,6 +6,7 @@ import styles from './index.module.css'
 
 //components
 import ButtonHam from '../buttonHam'
+import MenuResponsive from '../menuResponsive'
 
 //navs menu responsive
 const NavsResponsive: React.FC = () => {
@@ -65,7 +66,8 @@ const Navbar: React.FC = () => {
             </span>
             {
                 activeResponsiveMenu &&
-                <NavsResponsive />
+                // <NavsResponsive />
+                <MenuResponsive/>
             }
         </header>
     )

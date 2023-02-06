@@ -74,7 +74,8 @@
     text-align: center;
 }
 
-.card_bottom button {
+.card_bottom a {
+    text-decoration: none;
     cursor: pointer;
     padding: 10px 20px;
     border: 2px solid #ffff;
@@ -87,7 +88,7 @@
     margin-top: 10px;
     transition: 500ms;
 }
-.card_bottom button:hover{
+.card_bottom a:hover{
     background-color: #ffffff94;
 }
 

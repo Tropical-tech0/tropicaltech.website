@@ -31,10 +31,11 @@
 .navs ul li a{
     color: #f8f5f2;
     text-decoration: none;
+    position: relative;
 } 
 .navs ul li a:hover{
     text-decoration: underline;
-}
+} 
 
 .responsive_button{
     display: none;
@@ -46,6 +47,7 @@
     padding: 7px 14px;
     border: 2px solid #0883AB;
     transition: 500ms;
+    box-shadow: 3px 3px 1px #cccccc94;
 }
 
 .contact_nav a:hover{

@@ -73,7 +73,8 @@
     line-height: 26px;
     color: #141414;
     font-style: normal;
-
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 19px;
 }
 .description strong{
     font-weight: 700;

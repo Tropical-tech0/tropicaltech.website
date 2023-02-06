@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700;900&display=swap');
+
+.contact_section {
+    width: 100%;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes movement{
+    from{ opacity: 0; transform: translateX(-50%);}
+}
+
+.apresentation {
+    margin-top: 82px;
+    display: flex;
+    background-color: #f5fafd;
+    clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+    height: 70vh;
+}
+
+.texts {
+    flex: 1;
+    display: flex;
+    padding: 100px;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadein 500ms ease-in;
+}
+
+.texts h4 {
+    font-family: "Raleway", sans-serif;
+    font-family: 900;
+    font-size: 30px;
+}
+
+.texts p {
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    color: #616161;
+    line-height: 26px;
+}
+
+.img_card {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.img_card img {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(11% 0, 100% 0, 100% 88%, 36% 59%);
+    animation: fadein 500ms ease-in;
+}
+
+.contact_form{
+    margin-top: -50px;
+}
+
+.card_title {
+    background-color: #2B2B2B;
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.25);
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    padding: 20px 30px;
+    margin-left: 4rem;
+    max-width: 300px;
+    position: relative;
+    z-index: 10;
+    animation: movement 200ms ease-in;
+}
+
+.card_title h4 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 32px;
+    color: #FFFFFF;
+}
+
+.card_title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 10px 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+.card_form {
+    padding: 100px 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.inputs {
+    margin: 200px 0;
+}
+
+.card_form .first,
+.card_form .second {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+}
+
+.send_button {
+    margin-top: 4rem;
+    background: #1C1C1C;
+    border: 5px solid #959595;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+}
+
+.send_button img {
+    width: 30px;
+    height: 30px;
+}
+
+.send_button {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+.send_button:hover{
+    opacity: .8;
+}
+.img_card_mobile{
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    clip-path: polygon(100% 24%, 100% 74%, 0 83%, 0 49%);
+    background-image: url(/img/background-one-home.jpg);
+    top: 43%;
+    background-size: 200%;
+    display: none;
+}
+
+@media screen and (max-width: 890px){
+    .img_card{
+        display: none;
+    }
+    .texts{
+        padding: 70px 40px;
+    }
+    .card_title{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .img_card_mobile{
+        display: block;
+    }
+}
+
+
+@media screen and (max-width: 520px){
+    .card_form .second, .card_form .first{
+        flex-direction: column;
+        gap: 0;
+    }
+    .apresentation{
+        justify-content: center;
+    }
+}

@@ -85,6 +85,7 @@
     }
     .apresentation_section .into_card h5{
         text-align: center;
+        width: auto;
     }
     .apresentation_section .into_card h4{
         font-size: 30px;

@@ -4,6 +4,7 @@ import Head from 'next/head'
 //components
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
+import SectionContact from '@/components/contactComponents/sectionContact'
 
 const Contact: React.FC = () => {
   return (
@@ -13,9 +14,7 @@ const Contact: React.FC = () => {
     </Head>
     <Navbar/>
     <main>
-      <div style={{height: '400px'}}>
-        
-      </div>
+      <SectionContact/>
     </main>
     <Footer/>
     </>

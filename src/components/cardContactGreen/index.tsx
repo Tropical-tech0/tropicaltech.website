@@ -24,9 +24,9 @@ const CardContactGreen: React.FC = () => {
                     <p>Ampliação do Time</p>
                     <p>Setor Público e Privado</p>
                 </span>
-                <button>
+                <a href="https://wa.link/6vvx11">
                     CONFIRA!
-                </button>
+                </a>
             </div>
         </div>
     )

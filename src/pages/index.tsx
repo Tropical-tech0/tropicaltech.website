@@ -15,25 +15,21 @@ export default function Home() {
     <>
       <Head>
         <title>Tropical Tech</title>
-        <meta name="description" content="Welcome to Tropical Tech, a software development company with a team of developers, designers, and strategists ready to transform your business. Contact us for more information."/>
+        <meta name="description" content="Welcome to Tropical Tech, a software development company with a team of developers, designers, and strategists ready to transform your business. Contact us for more information." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="keywords" content="software development, app development, website development"/>
-        <meta name="robots" content="index, follow"/>
-        <meta name="author" content="Tropical Tech"/>
+        <meta name="keywords" content="software development, app development, website development" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Tropical Tech" />
       </Head>
 
       <Navbar />
-
-      <main className={styles.main}>
-
+      <main>
         <SectionApresentation />
         <SectionProjects />
         <SectionMethods />
         <SectionAbout />
-
-        <Footer />
       </main>
-
+      <Footer />
     </>
   )
 }

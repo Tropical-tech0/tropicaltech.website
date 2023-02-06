@@ -34,10 +34,106 @@
     text-align: center;
 }
 
+/* card three */
+.card_three{
+    margin-top: 40px;
+    max-width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(/img/meeting.png);
+    background-position: center;
+    background-size: 100%;
+    position: relative;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
+    transition: 1s;
+    z-index: 10;
+    padding: 60px 0;
+}
+.card_three::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 1;
+}
+.card_three span{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.card_three h4{
+    z-index: 10;
+    text-align: center;
+    font-family: "Raleway", sans-serif;;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 31px;
+    color: #ffff;
+    letter-spacing: 2px;
+    padding: 30px;
+}
+.card_three p{
+    z-index: 10;
+    text-align: center;
+    font-size: 15px;
+    line-height: 26px;
+    font-weight: 400;
+    padding: 0 100px;
+}
+.card_three a{
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 10;
+    color: #fff;
+    padding: 10px 20px;
+    background: transparent;
+    border: 2px solid #ffff;
+    border-radius: 3px;
+}
+.card_three a:hover{
+    background-color: #ffffff67;
+}
+.card_three a,
+.card_three p,
+.card_three h4
+{
+    transition: 1s;
+    transform: scale(1, 1);
+}
+
+.card_three:hover{
+    background-size: 200%;
+}
+.card_three:hover .content a, 
+.card_three:hover .content p,
+.card_three:hover .content h4
+{
+    transform: scale(1.07, 1.07);
+}
+
 @media screen and (max-width: 780px) {
 
     .card_one h4 {
         font-size: 44px;
+    }
+    .card_three h4{
+        padding: 0 10px;
+        font-size: 24px;
+        line-height: 27px;
+    }
+    .card_three{
+        background-size: cover;
+    }
+    .card_three p{
+        padding: 50px;
     }
 
 }
