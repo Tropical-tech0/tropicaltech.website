@@ -9,25 +9,6 @@ import styles from './index.module.css'
 import ButtonHam from '../buttonHam'
 import MenuResponsive from '../menuResponsive'
 
-//navs menu responsive
-const NavsResponsive: React.FC = () => {
-    return (
-        <div className={styles.responsive_menu}>
-            <ul>
-                <Link href="/">Home</Link>
-
-                <Link href="/product">Produtos</Link>
-
-                <Link href="/terceirizacao">Terceirização</Link>
-
-                <Link href="/blog">Blog</Link>
-
-                <Link href="/contact">Contato</Link>
-            </ul>
-        </div>
-    )
-}
-
 const Navbar: React.FC = () => {
 
     const { t } = useTranslation()

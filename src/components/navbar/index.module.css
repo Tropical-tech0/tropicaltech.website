@@ -53,44 +53,6 @@
 .contact_nav a:hover{
     background-color: #0b616393;
 }
-
-/* navs responsive component */
-.responsive_menu{
-    position: absolute;
-    top: 82px;
-    background-color: #0c0c0c;
-    width: 100%;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.responsive_menu ul{
-    border-radius: 3px;
-    width: 100%;
-    list-style: none;
-    display: flex;
-    gap: 5px;
-    flex-direction: column;
-    background-color: #FFFFFF;
-}
-.responsive_menu ul a{
-    padding: 0 2rem;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
-    font-size: 18px;
-    line-height: 2px;
-    color: gray;
-}
-.responsive_menu ul a:hover{
-    background-color: #55595C;
-    color: #fff;
-}
-
 @media screen and (max-width: 1030px){
 
     .navs{
