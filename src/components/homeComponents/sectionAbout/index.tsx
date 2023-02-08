@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 
 //components
 import CardContact from '@/components/cardContact'
-import Teste from '@/components/teste/teste'
 
 type ICard = {
     imgUrl: string,
