@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from "next/link"
+import { useTranslation } from 'react-i18next'
 
 //styles
 import styles from './index.module.css'
@@ -29,6 +30,8 @@ const NavsResponsive: React.FC = () => {
 
 const Navbar: React.FC = () => {
 
+    const { t } = useTranslation()
+
     //render responsive menu
     const [activeResponsiveMenu, setActiveResponsiveMenu] = React.useState<boolean>(false)
 
@@ -42,19 +45,19 @@ const Navbar: React.FC = () => {
             <div className={styles.navs}>
                 <ul>
                     <li>
-                        <Link href='/'>Home</Link>
+                        <Link href='/'>{t("home")}</Link>
                     </li>
                     <li>
-                        <Link href='/product'>Produtos</Link>
+                        <Link href='/product'>{t("product")}</Link>
                     </li>
                     <li>
-                        <Link href='/terceirizacao'>Terceirização</Link>
+                        <Link href='/terceirizacao'>{t("terceirizacao")}</Link>
                     </li>
                     <li>
-                        <Link href='/blog'>Blog</Link>
+                        <Link href='/blog'>{t("blog")}</Link>
                     </li>
                     <li className={styles.contact_nav}>
-                        <Link href='/contact'>Contato</Link>
+                        <Link href='/contact'>{t("contact")}</Link>
                     </li>
                 </ul>
             </div>

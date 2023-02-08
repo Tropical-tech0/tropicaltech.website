@@ -1,30 +1,34 @@
 import React from 'react'
 import styles from './index.module.css'
+import { useTranslation } from 'react-i18next'
 
 //cards info
 import cards from './cardsInfo'
 
 //products section - product page
 const SectionProducts = () => {
+
+    const { t } = useTranslation()
+
     return (
         <section className={styles.products_section}>
             {
                 cards.map((item, index: number) => (
                     <div className={styles.card} key={index}>
                         <div className={styles.info} style={{order: (item.orderImg === '1' ? "2" : "1")}}>
-                            <h4>{item.title}</h4>
-                            <p>{item.descriptionTop}</p>
+                            <h4>{t(item.title)}</h4>
+                            <p>{t(item.descriptionTop)}</p>
                             <span className={styles.features}>
-                                <p>Seção de recursos:</p>
+                                <p>{t("resourcesSection")}</p>
                                 <ul>
                                     {
                                         item.features.map((feature: string, index:number) => (
-                                            <li key={index}>{feature}</li>
+                                            <li key={index}>{t(feature)}</li>
                                         ))
                                     }
                                 </ul>
                             </span>
-                            <p>{item.descriptionBottom}</p>
+                            <p>{t(item.descriptionBottom)}</p>
                         </div>
                         <div 
                             className={styles.img_card}

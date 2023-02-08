@@ -1,9 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
 import styles from './index.module.css'
+import { useTranslation } from 'react-i18next'
 
 //button link to contact whatsapp
 const WhatsappButton = () => {
+    const { t } = useTranslation()
     return (
         <a
             className={styles.whatsapp_button} href="https://wa.link/6vvx11"
@@ -16,7 +18,7 @@ const WhatsappButton = () => {
                     width={14}
                     height={14}
                 />
-                <p>ENTRE EM CONTATO!</p>
+                <p>{t("buttonWelcome")}</p>
                 <h6 style={{ fontSize: "16px" }}>&#128515;</h6>
             </span>
         </a>

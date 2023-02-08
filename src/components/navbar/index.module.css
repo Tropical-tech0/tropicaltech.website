@@ -23,7 +23,7 @@
 
 .navs ul{
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     padding: 0;
     list-style: none;
 }
@@ -42,16 +42,16 @@
 }
 
 .contact_nav a{
-    background-color: #0883AB;
+    border: 2px solid #0B6263;
     border-radius: 24px;
     padding: 7px 14px;
-    border: 2px solid #0883AB;
     transition: 500ms;
     box-shadow: 3px 3px 1px #cccccc94;
+    background-color: #0B6263;
 }
 
 .contact_nav a:hover{
-    background-color: #0882ab7a;
+    background-color: #0b616393;
 }
 
 /* navs responsive component */

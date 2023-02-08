@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './index.module.css'
+import { useTranslation } from 'react-i18next'
 
 //components
 import WhatsappButton from '@/components/whatsappButton'
@@ -9,6 +10,7 @@ const SectionApresentation = () => {
 
     const background_content: any = React.useRef<HTMLElement>(null)
     const section: any = React.useRef<HTMLElement>(null)
+    const { t } = useTranslation()
 
     //scroll effect - brightness background
     React.useEffect(() => {
@@ -35,11 +37,10 @@ const SectionApresentation = () => {
         <section ref={section} className={styles.apresentation_section} aria-labelledby="presentation_header">
             <div ref={background_content} className={styles.background_content}></div>
             <div className={styles.into_card}>
-                <h4 id="presentation_header">SEJA BEM-VINDO À TROPICAL TECH</h4>
+                <h4 id="presentation_header">{t("welcome")}</h4>
                 <span>
                     <h5 id="presentation_text">
-                        Somos uma software house, nosso time de desenvolvedores,
-                        designers e estrategistas estão prontos para transformar seu negócio
+                        {t("descriptionWelcome")}
                     </h5>
                     <WhatsappButton />
                 </span>

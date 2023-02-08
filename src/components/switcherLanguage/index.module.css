@@ -1,0 +1,88 @@
+.container{
+    background-color: #F9F9F9;
+    width: 180px;
+    position: fixed;
+    z-index: 1000;
+    right: 5%;
+    border: 1px solid lightgray;
+    top: calc(100% - 32px);
+    bottom: 0;
+}
+
+.active{
+    top: inherit;
+}
+
+/* header */
+
+.header{
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    height: 32px;
+}
+.selected_country{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.selected_country img{
+    width: 20px;
+    height: 20px;
+}
+.selected_country h4{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    line-height: 17px;
+    font-size: 16px;
+    color: #666666;
+}
+.arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: .7;
+}
+.arrow img{
+    width: 20px;
+    height: 20px;
+}
+
+/* body */
+
+.body{
+    border-top: 1px solid #c0bbbb;
+    display: flex;
+    flex-direction: column;
+    background-color: #EEEEEE;
+}
+
+.language_card{
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    gap: 5px;
+    cursor: pointer;
+}
+.language_card:hover{
+    background-color: #f7f6f6;
+}
+.language_card img{
+    width: 25px;
+    height: 25px;
+}
+.language_card p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.selected{
+    background-color: #cfc9c9;
+}
+.selected:hover{
+    background-color: #cfc9c9;
+}

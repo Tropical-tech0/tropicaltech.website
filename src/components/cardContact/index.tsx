@@ -1,18 +1,22 @@
 import React from 'react'
-import WhatsappButton from '../whatsappButton'
 import styles from './index.module.css'
+import { useTranslation } from 'react-i18next'
 
+//card contact - home page
 const CardContact: React.FC = () => {
+
+  const { t } = useTranslation()
+
   return (
     <div className={styles.contact_card}>
         <div className={styles.img_card}>
         
         </div>
         <div className={styles.info_card}>
-            <h4>FAÇA PARCERIA COM UMA AGÊNCIA DE DESENVOLVIMENTO DE APLICATIVOS OUSADA.</h4>
-            <p>Como os principais desenvolvedores de aplicativos do Brasil, fazemos parcerias com empresas e empreendedores ambiciosos em todo o mundo. Vamos discutir sua ideia de desenvolvimento de produto ou aplicativo digital para que possamos torná-la realidade.</p>
+            <h4>{t("contactTitle")}.</h4>
+            <p>{t("contactDescription")}</p>
             <a href='https://wa.link/6vvx11'>
-                Entrar em contato
+              {t("contactButton")}
             </a>
         </div>
     </div>

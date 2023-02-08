@@ -1,31 +1,32 @@
 import React from "react";
 import styles from './index.module.css'
+import { useTranslation } from "react-i18next";
 
+//contact card - terceirizacao page
 const CardContactGreen: React.FC = () => {
+
+    const { t } = useTranslation()
 
     return (
         <div className={styles.card}>
             <div className={styles.card_top}>
                 <span className={styles.logo}>
                     <img src="/img/icon-business.png" alt="icon-business" />
-                    <h4>PARA QUALQUER TIPO DE NEGÓCIO</h4>
+                    <h4>{t("cardTwoTerceirizacaoTitle")}</h4>
                 </span>
                 <p>
-                    Seja qual for o seu tamanho, escala ou setor, nós atendemos. Seja sua organização uma Start-Up,
-                    Scale-up ou Empresa em Fintech, Edtech, Martech ou em Serviços Públicos - nossa profunda experiência está
-                    alinhada a todos os setores e tecnologias, permitindo-nos apoiá-lo para impulsionar maior crescimento,
-                    eficiência e sucesso.
+                    {t("cardTwoTerceirizacaoDescription")}
                 </p>
             </div>
             <div className={styles.card_bottom}>
-                <h4>TEMOS A SOLUÇÃO</h4>
+                <h4>{t("cardThreeTerceirizacaoTitle")}</h4>
                 <span>
-                    <p>Negócios Empresariais</p>
-                    <p>Ampliação do Time</p>
-                    <p>Setor Público e Privado</p>
+                    <p>{t("cardThreeTerceirizacaoResource1")}</p>
+                    <p>{t("cardThreeTerceirizacaoResource2")}</p>
+                    <p>{t("cardThreeTerceirizacaoResource3")}</p>
                 </span>
                 <a href="https://wa.link/6vvx11">
-                    CONFIRA!
+                    {t("cardThreeTerceirizacaoButton")}
                 </a>
             </div>
         </div>

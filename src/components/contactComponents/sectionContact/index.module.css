@@ -116,26 +116,24 @@
 
 .send_button {
     margin-top: 4rem;
-    background: #1C1C1C;
-    border: 5px solid #959595;
+    background: #0B6263;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    padding: 1.5rem;
-    border-radius: 50%;
+    padding: 1rem 2rem;
+    border-radius: 10px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 120px;
-    height: 120px;
     cursor: pointer;
+    border: 2px solid #0B6263;
+    transition: 500ms;
 }
 
 .send_button img {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
 
 .send_button {
@@ -147,7 +145,7 @@
     color: #FFFFFF;
 }
 .send_button:hover{
-    opacity: .8;
+    background: #0b61637e;
 }
 .img_card_mobile{
     width: 100%;
