@@ -15,9 +15,9 @@
 .whatsapp_button span{
     padding: 1rem;
     display: flex;
-    gap: 10px;
     align-items: center;    
     flex-direction: row;
+    gap: 10px;
 }
 
 .whatsapp_button span p{
@@ -37,4 +37,26 @@
 
 .whatsapp_button:hover p{
     text-decoration: underline;
+}
+
+@media screen and (max-width: 430px) {
+    .whatsapp_button{
+        width: 250px;
+        min-width: 0px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .whatsapp_button{
+        width: 180px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .whatsapp_button{
+        width: 150px;
+    }
+    .whatsapp_button span p{
+        font-size: 12px;
+    }
 }
