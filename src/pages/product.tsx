@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { useTranslation } from 'react-i18next'
 
 //components
 import Navbar from '@/components/navbar'
@@ -8,10 +9,13 @@ import SectionApresentation from '@/components/productComponents/sectionApresent
 import SectionProducts from '@/components/productComponents/sectionProducts'
 
 const Product = () => {
+
+  const { t } = useTranslation()
+
   return (
     <>
       <Head>
-        <title>Produtos - Tropical Tech</title>
+        <title>{t("productTagTitle")} - Tropical Tech</title>
       </Head>
       <Navbar />
 

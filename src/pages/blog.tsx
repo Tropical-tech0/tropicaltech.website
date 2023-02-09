@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { useTranslation } from 'react-i18next'
 
 //components
 import Navbar from '@/components/navbar'
@@ -8,10 +9,13 @@ import SectionApresentation from '@/components/blogComponents/sectionApresentati
 import SectionPosts from '@/components/blogComponents/sectionPosts'
 
 const Blog: React.FC = () => {
+ 
+  const { t } = useTranslation()
+
   return (
     <>
       <Head>
-        <title>Blog - Tropical Tech</title>
+        <title>{t("blogTagTitle")} - Tropical Tech</title>
       </Head>
       <Navbar/>
       <main>

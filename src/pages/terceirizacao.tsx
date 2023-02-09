@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { useTranslation } from 'react-i18next'
 
 //components
 import Navbar from '@/components/navbar'
@@ -10,10 +11,13 @@ import SectionServices from '@/components/terceirizacaoComponents/sectionService
 import SectionCarousel from '@/components/terceirizacaoComponents/sectionCarousel'
 
 const Terceirizacao = () => {
+  
+  const { t } = useTranslation()
+
   return (
     <>
     <Head>
-      <title>Sobre - Tropical Tech</title>
+      <title>{t("terceirizacaoTagTitle")} - Tropical Tech</title>
     </Head>
     <Navbar/>
     <main>

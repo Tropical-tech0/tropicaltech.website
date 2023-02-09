@@ -16,6 +16,15 @@ const footer = {
     cityThree: 'SAN PABLO'
 }
 
+//page titles
+const pageTitles = {
+    homeTagTitle: 'Hogar',
+    productTagTitle: 'Productos',
+    terceirizacaoTagTitle: 'Externalización',
+    blogTagTitle: 'Blog',
+    contactTagTitle: 'Contacto'
+}
+
 //home page
 const homePage = {
     welcome: 'BIENVENIDO A LA TECNOLOGÍA TROPICAL',
@@ -140,6 +149,7 @@ const es = {
     translation: {
         ...navbar,
         ...footer,
+        ...pageTitles,
         ...homePage,
         ...contactPage,
         ...terceirizacaoPage,

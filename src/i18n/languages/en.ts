@@ -16,6 +16,15 @@ const footer = {
     cityThree: 'SÃO PAULO'
 }
 
+//pages title
+const pageTitles = {
+    homeTagTitle: 'Home',
+    productTagTitle: 'Products',
+    terceirizacaoTagTitle: 'Outsourcing',
+    blogTagTitle: 'Blog',
+    contactTagTitle: 'Contact'
+}
+
 //home page
 const homePage = {
     welcome: "WELCOME TO TROPICAL TECH",
@@ -140,6 +149,7 @@ const en = {
     translation: {
         ...navbar,
         ...footer,
+        ...pageTitles,
         ...homePage,
         ...contactPage,
         ...terceirizacaoPage,
