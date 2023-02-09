@@ -27,7 +27,7 @@ const homePage = {
     projectVetsnow: 'Tienda Veterinaria Web y Móvil Enfocada al Área Veterinaria.',
     projectUhr: 'Aplicación Dirigida al Sector Hotelero.',
     projectFindconnection: 'Aplicación orientada a redes sociales y citas.',
-    methodTitle: 'DESDE EL DISEÑO SENCILLO HASTA APLICACIONES COMPLETAMENTE DESARROLLADAS CON TOTALIDAD',
+    methodTitle: 'DESDE EL DISEÑO SENCILLO HASTA APLICACIONES COMPLETAMENTE DESARROLLADAS CON',
     methodOneTitle: 'ESTRATEGIA',
     methodOneContent: 'Trabajamos con usted para comprender el problema que está tratando de resolver y la solución de producto digital para ese problema. Esto implica mucha investigación y pruebas de usuario iterativas.',
     methodTwoTitle: 'DISEÑO Y PRUEBA',

@@ -6,7 +6,8 @@ export interface ErrorMessages {
         lastName: string,
         email: string,
         phone: string,
-        description: string
+        description: string,
+        default: "Internal error"
     },
     pt: {
         price: string,
@@ -14,7 +15,8 @@ export interface ErrorMessages {
         lastName: string,
         email: string,
         phone: string,
-        description: string
+        description: string,
+        default: "Erro interno"
     },
     es: {
         price: string,
@@ -22,7 +24,8 @@ export interface ErrorMessages {
         lastName: string,
         email: string,
         phone: string,
-        description: string
+        description: string,
+        default: "Error interno"
     },
 }
 export const errorMessages: ErrorMessages = {
@@ -32,7 +35,8 @@ export const errorMessages: ErrorMessages = {
         lastName: "Invalid Last Name",
         email: "Invalid Email!",
         phone: "Invalid phone!",
-        description: "Invalid description!"
+        description: "Invalid description!",
+        default: "Internal error"
     },
     pt: {
         price: "Faixa de preço inválido!",
@@ -40,8 +44,8 @@ export const errorMessages: ErrorMessages = {
         lastName: "Último nome inválido!",
         email: "Email inválido!",
         phone: "Número de telefone inválido!",
-        description: "Descrição do projeto inválida!"
-
+        description: "Descrição do projeto inválida!",
+        default: "Erro interno"
     },
     es: {
         price: '¡Precio no válido!',
@@ -49,6 +53,7 @@ export const errorMessages: ErrorMessages = {
         lastName: 'Apellido inválido',
         email: '¡Email inválido!',
         phone: '¡Teléfono inválido!',
-        description: '¡Descripción inválida!'
+        description: '¡Descripción inválida!',
+        default: "Error interno"
     }
 } as ErrorMessages

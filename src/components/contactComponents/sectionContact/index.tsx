@@ -3,6 +3,13 @@ import styles from './index.module.css'
 import TextField from '@mui/material/TextField';
 import { useTranslation } from 'react-i18next';
 
+//api mail instance
+import ApiMail from '@/services/mailService';
+
+//components
+import Loader from '@/components/loader';
+import CardAlertContact from '../cardAlertContact';
+
 //error messages
 import { errorMessages as MessagesError, ErrorMessages } from './errorMessages';
 
@@ -16,6 +23,13 @@ type DataForm = {
     description?: string
 }
 
+//price range
+const prices = [
+    "R$100,00 - R$1000,00",
+    "R$1000,00 - R$2000,00",
+    "R$2000,00 ou mais"
+]
+
 //contact section - contact page
 const SectionContact: React.FC = () => {
 
@@ -25,15 +39,21 @@ const SectionContact: React.FC = () => {
         lastName: "",
         email: "",
         phone: "",
-        price: "",
+        price: prices[0],
         description: ""
     } as DataForm)
+
+    //loading button
+    const [loading, setLoading] = React.useState<boolean>(false)
 
     //store the error messages
     const [errorMessages, setErrorMessages] = React.useState<ErrorMessages | any>(MessagesError)
 
+    //show alert messages
+    const [alertMessages, setAlertMessages] = React.useState<any | []>([])
+
     const { t, i18n } = useTranslation()
-    
+
     //check if mail is valid
     const validateEmail = (email: string) => {
         let re = /\S+@\S+\.\S+/;
@@ -44,31 +64,49 @@ const SectionContact: React.FC = () => {
     //send email
     const sendMail = async () => {
 
-        let errors: {error: string}[] = []
+        setLoading(true)
+
+        let errors: { error: string }[] = []
         let errorMsgs: any = errorMessages[i18n.language]
 
         let isValidMail = validateEmail(form.email as string)
 
-        !isValidMail && errors.push({error: errorMsgs["email"]})
+        !isValidMail && errors.push({ error: errorMsgs["email"] })
 
         //check errors in the form
         Object.entries(form).forEach(([key, value]) => {
 
-            if(!value || typeof value === undefined || value === null){
-                errors.push({error: errorMsgs[key]})
+            if (!value || typeof value === undefined || value === null) {
+                errors.push({ error: errorMsgs[key] })
             }
 
         })
 
-        if(errors.length > 0 ){
-           return errors.forEach(err => console.log(err))
+        if (errors.length > 0) {
+            setAlertMessages(errors.map( error => ({
+                type: "error",
+                message: error.error
+            })))
+            setLoading(false)
+            return
         }
 
-        //under construction
+        try {
+            var res = await ApiMail.post('/mail-service', form)
+            setLoading(false)
+            if(res.status === 200){
+                setAlertMessages([{type: "success", message: "E-mail enviado"}])
+            }
+        } catch (err) {
+            setLoading(false)
+            setAlertMessages([{type: "error", message: errorMsgs["default"]}])
+        }
 
     }
 
     return (
+        <>
+        <CardAlertContact alertMessages={alertMessages}/>
         <section className={styles.contact_section}>
             <div className={styles.apresentation}>
                 <div className={styles.texts}>
@@ -95,7 +133,7 @@ const SectionContact: React.FC = () => {
                             label={t("inputFirstName")}
                             variant="standard"
                             sx={{ width: "100%", margin: "20px 0" }}
-                            onChange={(event: any) => setForm({...form, firstName: event.target.value})}
+                            onChange={(event: any) => setForm({ ...form, firstName: event.target.value })}
                             value={form.firstName}
                         />
                         <TextField
@@ -103,7 +141,7 @@ const SectionContact: React.FC = () => {
                             label={t("inputLastName")}
                             variant="standard"
                             sx={{ width: "100%", margin: "20px 0" }}
-                            onChange={(event: any) => setForm({...form, lastName: event.target.value})}
+                            onChange={(event: any) => setForm({ ...form, lastName: event.target.value })}
                             value={form.lastName}
                         />
                     </span>
@@ -113,7 +151,7 @@ const SectionContact: React.FC = () => {
                             label={t("inputEmail")}
                             variant="standard"
                             sx={{ width: "100%", margin: "20px 0" }}
-                            onChange={(event: any) => setForm({...form, email: event.target.value})}
+                            onChange={(event: any) => setForm({ ...form, email: event.target.value })}
                             value={form.email}
                         />
                         <TextField
@@ -121,33 +159,52 @@ const SectionContact: React.FC = () => {
                             label={t("inputPhone")}
                             variant="standard"
                             sx={{ width: "100%", margin: "20px 0" }}
-                            onChange={(event: any) => setForm({...form, phone: event.target.value})}
+                            onChange={(event: any) => setForm({ ...form, phone: event.target.value })}
                             value={form.phone}
                         />
                     </span>
-                    <TextField 
-                        id="standard-basic" 
+                    <TextField
+                        id="standard-select-currency-native"
+                        select
                         label={t("inputPrice")}
-                        variant="standard" 
+                        SelectProps={{
+                            native: true,
+                        }}
                         sx={{ width: "100%", margin: "20px 0" }}
-                        onChange={(event: any) => setForm({...form, price: event.target.value})}
-                        value={form.price}
-                    />
-                    <TextField 
-                        id="standard-basic" 
-                        label={t("projectDescription")} 
-                        variant="standard" 
+                        variant="standard"
+                        onChange={(event: any) => setForm({ ...form, price: event.target.value })}
+                    >
+                        {prices.map((option, index) => (
+                            <option key={index} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </TextField>
+                    <TextField
+                        id="standard-multiline-static"
+                        label={t("projectDescription")}
+                        multiline
+                        rows={4}
                         sx={{ width: "100%", margin: "20px 0" }}
-                        onChange={(event: any) => setForm({...form, description: event.target.value})}
+                        variant="standard"
+                        onChange={(event: any) => setForm({ ...form, description: event.target.value })}
                         value={form.description}
                     />
                     <button className={styles.send_button} onClick={() => sendMail()}>
-                        <p>{t("sendButton")}</p>
-                        <img src="/img/send-icon.png" alt="send-icon" />
+                        {
+                            loading ?
+                                <Loader />
+                                :
+                                <>
+                                    <p>{t("sendButton")}</p>
+                                    <img src="/img/send-icon.png" alt="send-icon" />
+                                </>
+                        }
                     </button>
                 </div>
             </div>
         </section>
+        </>
     )
 }
 

@@ -4,6 +4,32 @@
   border: 0;
   box-sizing: border-box;
 }
+
+/* Raleway fonts */
+@font-face{
+  font-family: "Raleway";
+  src: url(/fonts/raleway.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url(/fonts/Raleway-Black.ttf);
+  font-weight: 900;
+}
+/* ... */
+
+/* Playfair Display fonts */
+@font-face {
+  font-family: "Playfair Display";
+  src: url(/fonts/PlayfairDisplay-italic.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url(/fonts/PlayfairDisplay.ttf);
+  font-family: 400;
+}
+/* ... */
 body{
   background-color: #ffff;
 }

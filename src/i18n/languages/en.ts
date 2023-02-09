@@ -27,7 +27,7 @@ const homePage = {
     projectVetsnow: "Web And Mobile Veterinary Store Focused On The Veterinary Area.",
     projectUhr: "Application Aimed at the Hotel Sector.",
     projectFindconnection: "App Geared For Social And Dating.",
-    methodTitle: "FROM SIMPLE DESIGN TO FULLY DEVELOPED APPLICATIONS WITH COMPLETENESS",
+    methodTitle: "FROM SIMPLE DESIGN TO FULLY DEVELOPED APPLICATIONS WITH",
     methodOneTitle: "STRATEGY",
     methodOneContent: "We work with you to understand the problem you are trying to solve and the digital product solution to that problem. This involves a lot of research and iterative user testing.",
     methodTwoTitle: "DESIGN AND TESTING",

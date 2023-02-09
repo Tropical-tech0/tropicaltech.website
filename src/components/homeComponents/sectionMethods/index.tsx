@@ -37,23 +37,17 @@ const methods: IMethod[] = [
   }
 ]
 
+
 //section into enterprise methods
 const SectionMethods: React.FC = () => {
 
   const { t } = useTranslation()
 
-  const words = [
-    "TESTES INTENSIVOS",
-    "DESENVOLVIMENTO ÁGIL",
-    "ESTRATÉGIA DE PRODUTO",
-    "SEGURANÇA"
-  ]
-
   return (
     <section className={styles.methods_section}>
       <div className={styles.header}>
         <h4>{t("methodTitle")}</h4>
-        <WritingComponent words={words}/>
+        <WritingComponent/>
       </div>
       <div className={styles.method_cards}>
 
