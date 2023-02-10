@@ -57,7 +57,6 @@ const SectionProjects: React.FC = () => {
                   backgroundImage: `url(${project.url})`
                 }}
               >
-                {/* <img src={project.url} alt={project.title} /> */}
               </div>
               <div className={styles.description}>
                 <strong>{project.title}</strong>

@@ -17,11 +17,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta name="description" content="Welcome to Tropical Tech, a software development company with a team of developers, designers, and strategists ready to transform your business. Contact us for more information." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="keywords" content="software development, app development, website development" />
+        <meta name="description" content="Welcome to Tropical Tech, a software development company specializing in app and website development. Our team of developers, designers, and strategists are ready to transform your business. Contact us for more information." />
+        <meta name="keywords" content="software development, app development, website development, Tropical Tech" />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Tropical Tech" />
+        <link rel="canonical" href="https://tropical-tech.netlify.app/" />
         <title>Tropical Tech | {t("homeTagTitle")}</title>
       </Head>
 

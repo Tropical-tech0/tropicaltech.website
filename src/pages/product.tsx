@@ -15,13 +15,18 @@ const Product = () => {
   return (
     <>
       <Head>
+        <meta name="description" content="Tropical Tech provides innovative solutions for software development using the latest technologies. Discover our methods and products." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content="software development, methods, products" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Tropical Tech" />
         <title>{t("productTagTitle")} - Tropical Tech</title>
       </Head>
       <Navbar />
 
       <main>
-        <SectionApresentation/>
-        <SectionProducts/>
+        <SectionApresentation />
+        <SectionProducts />
       </main>
 
       <Footer />

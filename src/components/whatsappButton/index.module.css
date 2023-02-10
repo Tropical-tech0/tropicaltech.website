@@ -12,7 +12,7 @@
     text-decoration: none;
 }
 
-.whatsapp_button span{
+.whatsapp_button .center{
     padding: 1rem;
     display: flex;
     align-items: center;    
@@ -20,7 +20,7 @@
     gap: 10px;
 }
 
-.whatsapp_button span p{
+.center p{
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
     font-weight: 700;
@@ -56,7 +56,7 @@
     .whatsapp_button{
         width: 150px;
     }
-    .whatsapp_button span p{
+    .whatsapp_button .center p{
         font-size: 12px;
     }
 }

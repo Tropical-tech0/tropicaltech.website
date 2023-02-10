@@ -30,6 +30,13 @@ const prices = [
     "R$2000,00 ou mais"
 ]
 
+//success messages
+const successMessages = {
+    pt: "E-mail enviado",
+    es: "Email enviado",
+    en: "Email sent"
+} as any
+
 //contact section - contact page
 const SectionContact: React.FC = () => {
 
@@ -95,7 +102,7 @@ const SectionContact: React.FC = () => {
             var res = await ApiMail.post('/mail-service', form)
             setLoading(false)
             if(res.status === 200){
-                setAlertMessages([{type: "success", message: "E-mail enviado"}])
+                setAlertMessages([{type: "success", message: successMessages[i18n.language]}])
             }
         } catch (err) {
             setLoading(false)

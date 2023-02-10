@@ -16,6 +16,10 @@ const Blog: React.FC = () => {
     <>
       <Head>
         <title>{t("blogTagTitle")} - Tropical Tech</title>
+        <meta name="description" content="Stay up to date with the latest news on software solutions and technology at Tropical Tech. Read our thoughts and ideas on the world of technology." />
+        <meta name="keywords" content="technology, software solutions, blog, news, Tropical Tech" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://tropical-tech.netlify.app/blog" />
       </Head>
       <Navbar/>
       <main>

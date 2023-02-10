@@ -106,7 +106,8 @@ const contactPage = {
     inputPhone: "Telefone",
     inputPrice: "Faixa de preço",
     projectDescription: "Descreva o seu projeto",
-    sendButton: "Enviar"
+    sendButton: "Enviar",
+    titleCardPlaces: "Encontre-nos aqui!"
 }
 
 //terceirizacao page

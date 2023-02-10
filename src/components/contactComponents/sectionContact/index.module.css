@@ -183,4 +183,7 @@
     .apresentation{
         justify-content: center;
     }
+    .contact_form{
+        margin-top: inherit;
+    }
 }

@@ -11,7 +11,7 @@ const WhatsappButton = () => {
             className={styles.whatsapp_button} href="https://wa.link/6vvx11"
             aria-label="Open WhatsApp chat"
         >
-            <span>
+            <span className={styles.center}>
                 <Image
                     src={"/img/icons-button/whatsapp.png"}
                     alt="whatsapp-icon"
