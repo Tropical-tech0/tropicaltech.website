@@ -38,6 +38,8 @@ export default async function createAdmin(req: NextApiRequest, res: NextApiRespo
             return res.status(200).json({success: true, message: "Created", response})
         }
 
+        res.status(200).json({message: "Error", success: false})
+
     } catch (error) {
         console.log(error)
         res.status(500).json({message: "Internal error", success: false})

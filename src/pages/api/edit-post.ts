@@ -27,7 +27,7 @@ export default async function editPost(req: NextApiRequest, res: NextApiResponse
         let post = await Post.findOne({ _id: postId }).exec()
 
         if (!post) {
-            res.status(204).json({ success: false, message: "Post not found", post: {} })
+            return res.status(204).json({ success: false, message: "Post not found", post: {} })
         }
 
         if (title) {
