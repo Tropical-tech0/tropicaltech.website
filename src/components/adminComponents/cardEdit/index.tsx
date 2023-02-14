@@ -36,6 +36,7 @@ const CardEdit: React.FC<Props> = ({ cardEdit, setCardEdit, setAlertMsgs, setUpd
             setLoad(false)
             if (response.status === 200 && response.data.success) {
                 setAlertMsgs([{ message: "Edit save", type: "success" }])
+                setUpdatePost({post: response.data.post, type: "edit"})
             }
 
         } catch (error: any) {
@@ -58,12 +59,17 @@ const CardEdit: React.FC<Props> = ({ cardEdit, setCardEdit, setAlertMsgs, setUpd
 
             if (response.status === 200 && response.data.success) {
                 setAlertMsgs([{ message: "Post deleted", type: "success" }])
-                setUpdatePost(cardEdit)
+                setUpdatePost({post: cardEdit, type: "delete"})
             }
-
+            
         } catch (error: any) {
             setLoad(false)
             console.log(error)
+            if(error.status === 502){
+                setAlertMsgs([{ message: error.response.data.message, type: "error" }])
+                setUpdatePost(cardEdit)
+                return
+            }
             setAlertMsgs([{ message: error.response.data.message, type: "error" }])
         }
     }

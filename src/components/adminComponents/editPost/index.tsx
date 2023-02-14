@@ -8,6 +8,7 @@ import Api from '@/services/api'
 //utils
 import { convertDate } from '@/utils/convertDate'
 import CardEdit from '../cardEdit'
+import LoaderTwo from '@/components/loaderTwo'
 
 type MessageError = {
     message: string,
@@ -27,7 +28,7 @@ const EditPost: React.FC = () => {
     useEffect(() => {
 
         const fetchAllPosts = async () => {
-
+            setLoad(true)
             try {
                 let response = await Api.get('/read-posts')
                 setLoad(false)
@@ -53,10 +54,14 @@ const EditPost: React.FC = () => {
         //update posts list through od delete action
         const alterPosts = () => {
 
-            let filter = backupPosts.filter((post: any) => post._id !== updatePost?._id)
+            let filter = backupPosts.filter((post: any) => post._id !== updatePost.post?._id)
 
-            setBackupPosts([...filter])
-            setAllPosts([...filter])
+            if(updatePost?.type === "edit"){
+                filter = [...filter, updatePost?.post] as any
+            }
+
+            setBackupPosts([...filter] as any)
+            setAllPosts([...filter] as any)
         }
         alterPosts()
 
@@ -67,17 +72,17 @@ const EditPost: React.FC = () => {
 
         let value = event.target.value
 
-        if(value){
+        if (value) {
 
-            let filter_posts = backupPosts.filter( (post: any) => 
+            let filter_posts = backupPosts.filter((post: any) =>
                 post.title.toLowerCase().includes(value.toLowerCase())
                 ||
-                post.content.toLowerCase().includes(value.toLowerCase())   
+                post.content.toLowerCase().includes(value.toLowerCase())
             )
 
             setAllPosts([...filter_posts])
 
-        }else{
+        } else {
             setAllPosts([...backupPosts])
         }
 
@@ -86,36 +91,48 @@ const EditPost: React.FC = () => {
     return (
         <div className={styles.edit_component}>
             <div className={styles.search_card}>
-                <input type="text" placeholder='Procure aqui...' onChange={search}/>
+                <input type="text" placeholder='Procure aqui...' onChange={search} />
             </div>
             <div className={styles.posts}>
                 {
-                    allPosts.map((post: any, index:number) => (
-                        <div 
-                            className={styles.post} 
-                            key={index}
-                            onClick={() => setCardEdit(post)}
+                    load ?
+                        <div style={{
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center"
+                        }}
                         >
-                            <img src={post.picture} alt={post.title} />
-                            <span>
-                                <h4>{post.title.length > 41 ? post.title.slice(0, 41)+"..." : post.title}</h4>
-                                <span className={styles.texts}>
-                                    <p>{post.content.slice(0, 31)+"..."}</p>
-                                    <small>{convertDate(post.createdAt)}</small>
-                                </span>
-                            </span>
+                            <LoaderTwo />
                         </div>
-                    ))
+                        :
+                        allPosts.map((post: any, index: number) => (
+                            <div
+                                className={styles.post}
+                                key={index}
+                                onClick={() => setCardEdit(post)}
+                            >
+                                <img src={post.picture} alt={post.title} />
+                                <span>
+                                    <h4>{post.title.length > 41 ? post.title.slice(0, 41) + "..." : post.title}</h4>
+                                    <span className={styles.texts}>
+                                        <p>{post.content.slice(0, 31) + "..."}</p>
+                                        <small>{convertDate(post.createdAt)}</small>
+                                    </span>
+                                </span>
+                            </div>
+                        ))
                 }
             </div>
             {
-                cardEdit && 
-                    <CardEdit 
-                        cardEdit={cardEdit} 
-                        setCardEdit={setCardEdit} 
-                        setAlertMsgs={setAlertMsgs}
-                        setUpdatePost={setUpdatePost}
-                    />
+                cardEdit &&
+                <CardEdit
+                    cardEdit={cardEdit}
+                    setCardEdit={setCardEdit}
+                    setAlertMsgs={setAlertMsgs}
+                    setUpdatePost={setUpdatePost}
+                />
             }
             {<CardAlertContact alertMessages={alertMsgs} />}
         </div>

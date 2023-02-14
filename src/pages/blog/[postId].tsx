@@ -14,7 +14,6 @@ import Api from '@/services/api'
 
 //utils
 import { convertDate } from '@/utils/convertDate'
-import Link from 'next/link'
 
 type Post = {
     author: string,
@@ -25,8 +24,33 @@ type Post = {
     id: string
 }
 
+export async function getStaticProps(context: any){
+    
+    const response = await Api.get("/read-post?postId="+context.params.postId)
+
+    return{
+        props: {
+            dataPost: response.data.post
+        }
+    }
+}
+
+export async function getStaticPaths(){
+    const response = await Api.get('/read-posts')
+
+    const paths = response.data.posts.map((post: any) => {
+        return{
+            params: {
+                postId: `${post._id}`
+            }
+        }
+    })
+
+    return {paths, fallback: false}
+}
+
 //post page - blog system
-const Post: React.FC = () => {
+const Post: React.FC<any> = ({dataPost}) => {
 
     const [post, setPost] = useState<Post | null>(null)
     const [recentPosts, setRecentPosts] = useState<any>([])
@@ -58,13 +82,24 @@ const Post: React.FC = () => {
 
                     setPost(filterPost)
                 }
-                
             } catch (error) {
                 console.log(error)
             }
 
         }
-        fetchPost()
+        if(!dataPost || typeof dataPost === undefined || dataPost === null){
+            fetchPost()
+        }else{
+            let filterPost: Post = {
+                author: dataPost.author,
+                title: dataPost.title,
+                paragraphs: dataPost.content.split('\n'),
+                picture: dataPost.picture,
+                date: convertDate(dataPost.createdAt),
+                id: dataPost._id
+            }
+            setPost(filterPost)
+        }
 
         //fetch recent posts
         const fetchRecentPosts = async () => {
@@ -92,7 +127,6 @@ const Post: React.FC = () => {
         }
 
         fetchRecentPosts()
-
     }, [])
 
     return (
