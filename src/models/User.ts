@@ -13,4 +13,6 @@ let UserModel = new Schema({
     }
 }, {timestamps: true})
 
-mongoose.model('users', UserModel)
+var User = mongoose.models.users || mongoose.model('users', UserModel)
+
+export default User

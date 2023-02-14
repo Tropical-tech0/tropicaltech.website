@@ -4,9 +4,9 @@ import NextCors from 'nextjs-cors'
 
 //mongoose connect
 import dbConnect from "@/utils/database";
-dbConnect()
 
 // import "../../models/Post"
+import Post from "@/models/Post";
 
 //create post - endpoint
 export default async function createPost(req: NextApiRequest, res: NextApiResponse) {
@@ -16,11 +16,11 @@ export default async function createPost(req: NextApiRequest, res: NextApiRespon
         methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
         origin: '*',
         optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-     });
+    });
+    
+    await dbConnect()
 
     var { author, title, content, picture } = req.body
-
-    const Post = mongoose.model('posts')
     
     try {
 

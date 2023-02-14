@@ -4,8 +4,11 @@ import { compareSync } from "bcryptjs"
 import { sign } from 'jsonwebtoken'
 import NextCors from 'nextjs-cors'
 
+//db
+import dbConnect from "@/utils/database";
+
 //user model
-// import '../../models/User'
+import User from "@/models/User";
 
 //login admin - endpoint
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
@@ -17,9 +20,9 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     });
 
-    var { username, password } = req.body
+    await dbConnect()
 
-    var User = mongoose.model('users')
+    var { username, password } = req.body
 
     try {
 

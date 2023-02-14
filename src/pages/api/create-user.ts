@@ -3,8 +3,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { genSaltSync, hashSync } from "bcryptjs"
 import NextCors from 'nextjs-cors';
 
+//import db
+import dbConnect from "@/utils/database";
+
 //user model
-// import '../../models/User'
+import User from "@/models/User";
 
 //created user admin - endpoint
 export default async function createAdmin(req: NextApiRequest, res: NextApiResponse){
@@ -16,9 +19,9 @@ export default async function createAdmin(req: NextApiRequest, res: NextApiRespo
         optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     });
 
+    await dbConnect()
+
     var { username, password } = req.body
-    
-    var User = mongoose.model('users')
 
     let salt = genSaltSync(10)
 
