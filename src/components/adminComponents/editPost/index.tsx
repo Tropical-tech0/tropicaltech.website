@@ -51,7 +51,7 @@ const EditPost: React.FC = () => {
 
     useEffect(() => {
 
-        //update posts list through od delete action
+        //update posts list through od delete action or edit
         const alterPosts = () => {
 
             let filter = backupPosts.filter((post: any) => post._id !== updatePost.post?._id)

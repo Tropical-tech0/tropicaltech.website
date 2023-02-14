@@ -67,7 +67,7 @@ const CardEdit: React.FC<Props> = ({ cardEdit, setCardEdit, setAlertMsgs, setUpd
             console.log(error)
             if(error.status === 502){
                 setAlertMsgs([{ message: error.response.data.message, type: "error" }])
-                setUpdatePost(cardEdit)
+                setUpdatePost({post: cardEdit, type: "delete"})
                 return
             }
             setAlertMsgs([{ message: error.response.data.message, type: "error" }])
