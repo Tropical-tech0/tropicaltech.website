@@ -2,6 +2,13 @@
     display: flex;
     padding: 20px 50px;
     flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    position: relative;
+    min-height: 400px;
+}
+.posts_section a{
+    text-decoration: none;
 }
 
 .post{
@@ -16,6 +23,8 @@
     object-position: center;
     transition: 500ms;
     cursor: pointer;
+    max-height: 400px;
+    height: 300px;
 }
 
 .post img:hover{
@@ -68,8 +77,30 @@
     text-decoration: underline;
     opacity: .9;
 }
+.loader{
+    height: 500px;
+    margin-top: -30px;
+    position: absolute;
+    background: rgba(0, 0, 0, .3);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader span{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
 
-@media screen and (max-width: 800px){
+.loader span p{
+    color: #fff;
+    font-family: "Raleway";
+}
+
+@media screen and (max-width: 932px){
     .post{
         max-width: 100%;
         width: 100%;

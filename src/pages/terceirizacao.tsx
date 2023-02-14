@@ -23,7 +23,7 @@ const Terceirizacao = () => {
     <main>
 
       <SectionApresentation/>
-      <SectionResources/>
+      {/* <SectionResources/> */}
       <SectionServices/>
       <SectionCarousel/>
 

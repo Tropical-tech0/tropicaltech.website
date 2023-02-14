@@ -1,0 +1,91 @@
+.edit_component {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.search_card {
+    height: 100px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search_card input{
+    background-color: #e9e7e7;
+    min-width: 80%;
+    border-radius: 14px;
+    padding: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    outline: 0;
+}
+
+.posts {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 
+    20px;
+    flex-wrap: wrap;
+}
+
+.post {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 400px;
+    transition: 500ms;
+    cursor: pointer;
+    border-radius: 14px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .1);
+}
+
+.post:hover{
+    transform: translateY(3%);
+}
+
+.post img{
+    border-top-right-radius: 14px;
+    border-top-left-radius: 14px;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+.post span{
+    padding: 30px;
+}
+
+.post h4 {
+    color: black;
+    font-family: "Raleway", sans-serif;
+}
+
+.post p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    color: #464545;
+}
+
+.post small{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    color: #464545;
+}
+
+@media screen and (max-width: 950px){
+    .posts{
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 380px){
+    .post{
+        height: 400px;
+    }
+} 

@@ -39,6 +39,11 @@
     }
 }
 
+.into_image img{
+    max-width: 518px;
+    max-height: 665px;
+}
+
 .into_card h4, .into_image img{
     margin-top: 150px;
 }
