@@ -34,7 +34,7 @@ const homePage = {
     projectsSubtitle: "Veja alguns de nossos projetos",
     projectKokua: "Aplicativo Voltado Para O Setor Turístico.",
     projectVetsnow: "Loja Veterinária Web E Mobile Voltada Para A Área Veterinária.",
-    projectUhr: "Aplicativo Voltado Para O Setor Hoteleiro.",
+    projectStreetu: "Aplicativo para rede social de vendas.",
     projectFindconnection: "App Voltado Para Social E Namoro.",
     methodTitle: "DO DESIGN SIMPLES AOS APLICATIVOS TOTALMENTE DESENVOLVIDOS COM",
     methodOneTitle: "ESTRATÉGIA",

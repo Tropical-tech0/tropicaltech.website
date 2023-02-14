@@ -64,6 +64,8 @@
     min-width: 200px;
     height: 400px;
     background-size: cover;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 .description{
     padding: 20px;

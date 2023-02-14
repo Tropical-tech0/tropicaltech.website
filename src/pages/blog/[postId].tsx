@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/Post.module.css'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 
 //components
 import Navbar from '@/components/navbar'
@@ -24,39 +23,37 @@ type Post = {
     id: string
 }
 
-export async function getStaticProps(context: any){
-    
+export async function getStaticProps(context: any) {
+
     const response = await Api.get("/read-post?postId="+context.params.postId)
 
-    return{
+    return {
         props: {
             dataPost: response.data.post
         }
     }
 }
 
-export async function getStaticPaths(){
+export async function getStaticPaths() {
     const response = await Api.get('/read-posts')
 
     const paths = response.data.posts.map((post: any) => {
-        return{
+        return {
             params: {
                 postId: `${post._id}`
             }
         }
     })
 
-    return {paths, fallback: false}
+    return { paths, fallback: false }
 }
 
 //post page - blog system
-const Post: React.FC<any> = ({dataPost}) => {
+const Post: React.FC<any> = ({ dataPost }) => {
 
     const [post, setPost] = useState<Post | null>(null)
     const [recentPosts, setRecentPosts] = useState<any>([])
     const [loadRecentPosts, setLoadRecentPosts] = useState<boolean>(true)
-
-    const router = useRouter()
 
     useEffect(() => {
 
@@ -67,6 +64,7 @@ const Post: React.FC<any> = ({dataPost}) => {
 
             try {
                 let response = await Api.get("/read-post?postId=" + postId)
+
                 if (response.status === 200 && response.data.success) {
 
                     let postData = response.data.post
@@ -87,9 +85,9 @@ const Post: React.FC<any> = ({dataPost}) => {
             }
 
         }
-        if(!dataPost || typeof dataPost === undefined || dataPost === null){
+        if (!dataPost || typeof dataPost === undefined || dataPost === null) {
             fetchPost()
-        }else{
+        } else {
             let filterPost: Post = {
                 author: dataPost.author,
                 title: dataPost.title,
@@ -107,15 +105,15 @@ const Post: React.FC<any> = ({dataPost}) => {
             try {
                 let response = await Api.get('/read-posts')
                 setLoadRecentPosts(false)
-                if(response.status === 200 && response.data.success){
+                if (response.status === 200 && response.data.success) {
 
                     let posts = response.data.posts
 
-                    let filter_posts = posts.slice(0,4)
+                    let filter_posts = posts.slice(0, 4)
 
                     setRecentPosts(filter_posts)
-                    
-                    return 
+
+                    return
                 }
 
                 setRecentPosts([])
@@ -136,7 +134,7 @@ const Post: React.FC<any> = ({dataPost}) => {
             </Head>
             <Navbar />
             <div className={styles.page_post}>
-                <div className={styles.header} style={{backgroundImage: `url(${post?.picture})`}}>
+                <div className={styles.header} style={{ backgroundImage: `url(${post?.picture})` }}>
                     <span>
                         <p>{post?.date} by {post?.author}</p>
                         <h4>{post?.title}</h4>
@@ -147,7 +145,7 @@ const Post: React.FC<any> = ({dataPost}) => {
                         <img src={post?.picture} alt="" />
                         <article className={styles.text_post}>
                             {
-                                post?.paragraphs.map( (paragraph, index) => (
+                                post?.paragraphs.map((paragraph, index) => (
                                     <p key={index}>{paragraph}</p>
                                 ))
                             }
@@ -158,32 +156,32 @@ const Post: React.FC<any> = ({dataPost}) => {
                             <h4>RECENT POSTS</h4>
                             {
                                 loadRecentPosts ?
-                                    <div 
+                                    <div
                                         style={{
-                                            display: "flex", 
+                                            display: "flex",
                                             justifyContent: "center",
                                             alignItems: "center",
                                             padding: "20px"
                                         }}
                                     >
-                                        <LoaderTwo/>
+                                        <LoaderTwo />
                                     </div>
-                                :
-                                recentPosts.map( (recent: any, index: number) => (
-                                    <div className={styles.list} key={index}>
-                                        <span>
-                                            <a href={"/blog/"+recent._id}>
-                                                <p>{recent.title}</p>
-                                            </a>
-                                            <small>{convertDate(recent.createdAt)}</small>
-                                        </span>
-                                    </div>
-                                ))
+                                    :
+                                    recentPosts.map((recent: any, index: number) => (
+                                        <div className={styles.list} key={index}>
+                                            <span>
+                                                <a href={"/blog/" + recent._id}>
+                                                    <p>{recent.title}</p>
+                                                </a>
+                                                <small>{convertDate(recent.createdAt)}</small>
+                                            </span>
+                                        </div>
+                                    ))
                             }
                         </div>
                     </div>
                 </div>
-                <Comments postId={post?.id}/>
+                <Comments postId={post?.id} />
             </div>
             <Footer />
         </>

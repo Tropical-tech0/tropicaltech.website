@@ -34,7 +34,7 @@ const homePage = {
     projectsSubtitle: "See some of our projects",
     projectKokua: "Application Aimed at the Tourism Sector.",
     projectVetsnow: "Web And Mobile Veterinary Store Focused On The Veterinary Area.",
-    projectUhr: "Application Aimed at the Hotel Sector.",
+    projectStreetu: "Sales social network application.",
     projectFindconnection: "App Geared For Social And Dating.",
     methodTitle: "FROM SIMPLE DESIGN TO FULLY DEVELOPED APPLICATIONS WITH",
     methodOneTitle: "STRATEGY",

@@ -26,7 +26,7 @@ export default async function readPost(req: NextApiRequest, res: NextApiResponse
         var response = await Post.findOne({ _id: postId }).exec()
 
         if (response) {
-            res.status(200).json({ success: true, post: response, message: "Success" })
+           return res.status(200).json({ success: true, post: response, message: "Success" })
         }
 
         res.status(204).json({ success: false, message: "Post not found", post: {} })

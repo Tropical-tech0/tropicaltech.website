@@ -24,10 +24,10 @@ const projects: IProject[] = [
     translateKey: "projectVetsnow"
   },
   {
-    url: '/img/projects/uhr.png', 
-    title: "UHR - ", 
-    description: "Aplicativo Voltado Para O Setor Hoteleiro.",
-    translateKey: "projectUhr"
+    url: '/img/projects/streetu.png', 
+    title: "StreetU - ", 
+    description: "Aplicativo para rede social de vendas.",
+    translateKey: "projectStreetu"
   },
   {
     url: '/img/projects/find-connection.png', 
