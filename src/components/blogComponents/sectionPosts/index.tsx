@@ -18,7 +18,7 @@ type AlertMessage = {
 }
 
 //list all posts
-const SectionPosts: React.FC = () => {
+const SectionPosts: React.FC<any> = ({ dataPosts }) => {
 
   const [allPosts, setAllPosts] = useState([])
   const [alertMsgs, setAlertMsgs] = useState<AlertMessage[]>([])
@@ -42,7 +42,11 @@ const SectionPosts: React.FC = () => {
       }
 
     }
-    fetchPosts()
+    if(!dataPosts || typeof dataPosts === undefined || dataPosts === null || dataPosts?.length === 0){
+      fetchPosts()
+    }else{
+      setAllPosts(dataPosts)
+    }
   }, [])
 
   return (

@@ -8,7 +8,30 @@ import Footer from '@/components/footer'
 import SectionApresentation from '@/components/blogComponents/sectionApresentation'
 import SectionPosts from '@/components/blogComponents/sectionPosts'
 
-const Blog: React.FC = () => {
+//api
+import Api from '@/services/api'
+
+//all posts
+export async function getStaticProps(){
+
+  var response: any = []
+
+  try {
+    response = await Api.get('/read-posts')
+  } catch (error) {
+    response = {data:{posts: []}}
+  }
+
+  return{
+    props:{
+      dataPosts: response.data.posts
+    }
+  }
+
+}
+
+
+const Blog: React.FC<any> = ({ dataPosts }) => {
  
   const { t } = useTranslation()
 
@@ -24,7 +47,7 @@ const Blog: React.FC = () => {
       <Navbar/>
       <main>
         <SectionApresentation/>
-        <SectionPosts/>
+        <SectionPosts dataPosts={dataPosts}/>
       </main>
       <Footer/>
     </>
