@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import dbConnect from "@/utils/database";
 dbConnect()
 
+import "../../models/Comment"
+
 //create post's comment - endpoint
 export default async function createComment(req: NextApiRequest, res: NextApiResponse) {
     

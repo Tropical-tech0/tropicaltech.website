@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import dbConnect from "@/utils/database";
 dbConnect()
 
+import "../../models/Post"
+
 //create post - endpoint
 export default async function createPost(req: NextApiRequest, res: NextApiResponse) {
     
