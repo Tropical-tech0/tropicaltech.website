@@ -22,7 +22,7 @@ type Post = {
     date: string,
     id: string
 }
-
+/*
 export async function getStaticProps(context: any) {
 
     const response = await Api.get("/read-post?postId="+context.params.postId)
@@ -46,10 +46,10 @@ export async function getStaticPaths() {
     })
 
     return { paths, fallback: false }
-}
+}*/
 
 //post page - blog system
-const Post: React.FC<any> = ({ dataPost }) => {
+const Post: React.FC<any> = ({ dataPost = "" }) => {
 
     const [post, setPost] = useState<Post | null>(null)
     const [recentPosts, setRecentPosts] = useState<any>([])
