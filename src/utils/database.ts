@@ -9,7 +9,7 @@ async function dbConnect(){
         return;
     }
 
-    const db = await mongoose.connect(process.env.MONGO_URI as string)
+    const db = await mongoose.connect("mongodb+srv://clodaski:prime123@cluster0.wvtey.mongodb.net/?retryWrites=true&w=majority" as string)
     
     connection.isConnected = db.connections[0].readyState
 
