@@ -72,12 +72,11 @@ const Post: React.FC<any> = ({ dataPost = "" }) => {
                     let filterPost: Post = {
                         author: postData.author,
                         title: postData.title,
-                        paragraphs: postData.content.split('\n'),
+                        paragraphs: postData.content.split('\n\n'),
                         picture: postData.picture,
                         date: convertDate(postData.createdAt),
                         id: postData._id
                     }
-
                     setPost(filterPost)
                 }
             } catch (error) {
