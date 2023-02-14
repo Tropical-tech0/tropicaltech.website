@@ -103,8 +103,10 @@ const CardEdit: React.FC<Props> = ({ cardEdit, setCardEdit, setAlertMsgs, setUpd
                         value={form.content}
                         style={{ width: "100%" }}
                     />
-                    <div style={{ height: "400px", width: "100%", position: "relative" }}>
-                        <ReadPicture setPicture={setPicture} isVisible={true} pictureFile={cardEdit.picture} />
+                    <div className={styles.read_picture_container}>
+                        <div className={styles.read_picture_card}>
+                            <ReadPicture setPicture={setPicture} isVisible={true} pictureFile={cardEdit.picture} />
+                        </div>
                     </div>
                     <div style={{ width: "100%" }}>
                         <Button

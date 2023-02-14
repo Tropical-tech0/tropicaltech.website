@@ -86,9 +86,31 @@
     gap: .6rem;
 }
 
+.read_picture_container{
+    height: 400px;
+    width: 100%;
+    position: relative;
+}
+.read_picture_card{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 @keyframes showModalDelete{
     0%{
         top: 100%;
+    }
+}
+
+@media screen and (max-width: 590px){
+    .read_picture{
+        height: 200px;
+    }
+    .read_picture_container{
+        height: 200px;
     }
 }
 
