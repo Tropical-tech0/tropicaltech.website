@@ -6,7 +6,7 @@ import NextCors from 'nextjs-cors'
 import dbConnect from "@/utils/database";
 dbConnect()
 
-import "../../models/Post"
+// import "../../models/Post"
 
 //create post - endpoint
 export default async function createPost(req: NextApiRequest, res: NextApiResponse) {

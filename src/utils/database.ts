@@ -1,16 +1,18 @@
 import mongoose from "mongoose";
 
-const connection: {isConnected?: any} = {};
+const connection: { isConnected?: any } = {};
 
 //connect to database
-async function dbConnect(){
+async function dbConnect() {
 
-    if(connection.isConnected){
+    if (connection.isConnected) {
         return;
     }
 
-    const db = await mongoose.connect("mongodb+srv://clodaski:prime123@cluster0.wvtey.mongodb.net/?retryWrites=true&w=majority" as string)
-    
+    const db: any = await mongoose.connect(process.env.MONGO_URI as string, {
+        useNewUrlParser: true
+    } as any)
+
     connection.isConnected = db.connections[0].readyState
 
 }

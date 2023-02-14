@@ -6,6 +6,8 @@ import NextCors from 'nextjs-cors'
 import dbConnect from "@/utils/database";
 dbConnect()
 
+// import "../../models/Post"
+
 //read all posts - endpoint
 export default async function readPosts(req: NextApiRequest, res: NextApiResponse){
    

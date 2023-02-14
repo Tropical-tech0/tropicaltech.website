@@ -70,9 +70,9 @@ const CreatePost: React.FC = () => {
         } catch (error: any) {
             setLoad(false)
 
-            console.log(error.responde)
+            console.log(error)
             
-            if(error.responde.code === "ERR_BAD_RESPONSE") 
+            if(error.code === "ERR_BAD_RESPONSE") 
                 return setMessages([{message: "Post created", type: "success"}])
             
             setMessages([{message: "Internal error", type: "error"}])
