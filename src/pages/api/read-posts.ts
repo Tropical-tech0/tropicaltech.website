@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import mongoose from "mongoose";
+import NextCors from 'nextjs-cors'
 
 //mongoose connect
 import dbConnect from "@/utils/database";
@@ -8,6 +9,13 @@ dbConnect()
 //read all posts - endpoint
 export default async function readPosts(req: NextApiRequest, res: NextApiResponse){
    
+    await NextCors(req, res, {
+        // Options
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        origin: '*',
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+     });
+
     const model = mongoose.model('posts')
     
     try {

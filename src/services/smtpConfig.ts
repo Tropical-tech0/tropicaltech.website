@@ -3,8 +3,8 @@
 const configSMTP = {
     host: "smtp.gmail.com",
     port: 587,
-    user: "ferreiraclovis523@gmail.com",
-    pass: "pfddcmywyxglulxm"
+    user: "contato@tropical-tech.com",
+    pass: process.env.MAIL_SERVICE_PASS
 }
 
 export default configSMTP

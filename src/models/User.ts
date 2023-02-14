@@ -13,4 +13,4 @@ let UserModel = new Schema({
     }
 }, {timestamps: true})
 
-var User = mongoose.model('users', UserModel)
+mongoose.model('users', UserModel)

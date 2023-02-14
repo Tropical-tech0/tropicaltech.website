@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import mailer from 'nodemailer'
 import HtmlMail from "@/components/htmlMail";
+import NextCors from 'nextjs-cors'
 
 //smtp config
 import configSMTP from '../../services/smtpConfig'
@@ -16,6 +17,13 @@ interface DataMail {
 
 //endpoint - mail service
 export default async function mailService(req: NextApiRequest, res: NextApiResponse){
+
+    await NextCors(req, res, {
+        // Options
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        origin: '*',
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+     });
 
     var { body }: {body: DataMail} = req
 

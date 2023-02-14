@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import mongoose from "mongoose";
+import NextCors from 'nextjs-cors'
 
 //mongoose connect instance
 import dbConnect from "@/utils/database";
@@ -7,6 +8,13 @@ dbConnect()
 
 //edit post - endpoint
 export default async function editPost(req: NextApiRequest, res: NextApiResponse){
+
+    await NextCors(req, res, {
+        // Options
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        origin: '*',
+        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+     });
 
     var { postId, title, content, picture } = req.body
     let Post = mongoose.model('posts')
