@@ -36,7 +36,8 @@ export async function getStaticProps(context: any) {
     return {
         props: {
             dataPost: response.data.post
-        }
+        },
+        revalidate: 10
     }
 }
 
@@ -58,7 +59,7 @@ export async function getStaticPaths() {
         }
     })
 
-    return { paths, fallback: false }
+    return { paths, fallback: true }
 }
 
 //post page - blog system
