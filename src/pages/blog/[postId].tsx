@@ -42,12 +42,13 @@ export async function getStaticProps(context: any) {
 
 export async function getStaticPaths() {
     
-    var response: any 
-    try {
+    var response = await Api.get('/read-posts') 
+    /*try {
         response = await Api.get('/read-posts')
     } catch (error) {
+        console.log(error)
         response = {data: {posts: []}}
-    }
+    }*/
 
     const paths = response.data.posts.map((post: any) => {
         return {
