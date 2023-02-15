@@ -191,7 +191,6 @@ const SectionContact: React.FC = () => {
                         id="standard-multiline-static"
                         label={t("projectDescription")}
                         multiline
-                        rows={4}
                         sx={{ width: "100%", margin: "20px 0" }}
                         variant="standard"
                         onChange={(event: any) => setForm({ ...form, description: event.target.value })}

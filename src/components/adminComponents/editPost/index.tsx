@@ -91,7 +91,7 @@ const EditPost: React.FC = () => {
     return (
         <div className={styles.edit_component}>
             <div className={styles.search_card}>
-                <input type="text" placeholder='Procure aqui...' onChange={search} />
+                <input type="text" placeholder='Search here...' onChange={search} />
             </div>
             <div className={styles.posts}>
                 {
