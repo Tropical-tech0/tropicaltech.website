@@ -104,7 +104,7 @@ const Post: React.FC<any> = ({ dataPost }) => {
             let filterPost: Post = {
                 author: dataPost.author,
                 title: dataPost.title,
-                paragraphs: dataPost.content.split('\n'),
+                paragraphs: dataPost.content.split("\n\n"),
                 picture: dataPost.picture,
                 date: convertDate(dataPost.createdAt),
                 id: dataPost._id
