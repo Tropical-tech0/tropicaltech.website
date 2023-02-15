@@ -33,36 +33,6 @@ export default function AuthAdminProvider({children}: Props){
 
     const [admin, setAdmin] = useState<User | null>(null)
 
-    useEffect(() => {
-
-        //check if token is valid
-        const checkTokenJWT = async () => {
-
-            if(typeof window !== "undefined"){
-
-                let token = getUserLocalStorage()?.token
-
-                try {
-                    let response = await Api.get('/check-jwt?tokenaccess='+token)
-    
-                    if(response.data.auth){
-                        let user = getUserLocalStorage()
-                        setAdmin({...user, auth: true})
-                    }else{
-                        setUserLocalStorage(null)
-                    }
-                } catch (error: any) {
-                    !error.response?.data.auth && setUserLocalStorage(null)
-                }
-
-            }
-
-        }
-
-        checkTokenJWT()
-
-    }, [])
-
     //auth admin
     const login = async ({username, password}: ParamsLogin) => {
 

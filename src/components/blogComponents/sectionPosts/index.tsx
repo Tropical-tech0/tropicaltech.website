@@ -63,7 +63,14 @@ const SectionPosts: React.FC<any> = ({ dataPosts }) => {
         allPosts.map((post: any, index: number) => (
           <div className={styles.post} key={index}>
             <Link href={`blog/${post._id}`}>
-              <img src={post.picture} alt={post.title} />
+              {
+                post?.picture ?
+                <img src={post.picture} alt={post.title} />
+                :
+                <div className={styles.without_img}>
+                  <img src="/img/post-icon.png" alt="post-icon" />
+                </div>
+              }
             </Link>
             <span>
               <small>{convertDate(post.createdAt)}</small>

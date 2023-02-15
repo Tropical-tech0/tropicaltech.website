@@ -64,14 +64,13 @@ const LoginAdmin: React.FC = () => {
         } catch (error: any) {
 
             setLoad(false)
-            console.log(error)
 
-            if (error.status === 401) {
+            if (error.response?.status === 401) {
                 setAlertMsgs([{ message: error.response.data.message, type: "error" }])
                 return
             }
 
-            if (error.status === 500) {
+            if (error.response?.status === 500) {
                 setAlertMsgs([{ message: error.response.data.message, type: "error" }])
             }
         }

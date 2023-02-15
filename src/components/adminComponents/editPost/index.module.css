@@ -78,6 +78,11 @@
     color: #464545;
 }
 
+.no_posts{
+    font-family: "Raleway", sans-serif;
+    color: #464545;
+}
+
 @media screen and (max-width: 950px){
     .posts{
         flex-wrap: wrap;

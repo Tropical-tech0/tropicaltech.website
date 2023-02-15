@@ -22,10 +22,16 @@ type Post = {
     date: string,
     id: string
 }
-/*
+
 export async function getStaticProps(context: any) {
 
-    const response = await Api.get("/read-post?postId="+context.params.postId)
+    var response: any
+    try {
+        response = await Api.get("/read-post?postId="+context.params.postId)
+    } catch (error) {
+        console.log(error)
+        response = {data: {posts: {}}}
+    }
 
     return {
         props: {
@@ -35,21 +41,27 @@ export async function getStaticProps(context: any) {
 }
 
 export async function getStaticPaths() {
-    const response = await Api.get('/read-posts')
+    
+    var response: any 
+    try {
+        response = await Api.get('/read-posts')
+    } catch (error) {
+        response = {data: {posts: []}}
+    }
 
     const paths = response.data.posts.map((post: any) => {
         return {
             params: {
-                postId: `${post._id}`
+                postId: `${post?._id}`
             }
         }
     })
 
     return { paths, fallback: false }
-}*/
+}
 
 //post page - blog system
-const Post: React.FC<any> = ({ dataPost = "" }) => {
+const Post: React.FC<any> = ({ dataPost }) => {
 
     const [post, setPost] = useState<Post | null>(null)
     const [recentPosts, setRecentPosts] = useState<any>([])
@@ -73,7 +85,7 @@ const Post: React.FC<any> = ({ dataPost = "" }) => {
                         author: postData.author,
                         title: postData.title,
                         paragraphs: postData.content.split('\n\n'),
-                        picture: postData.picture,
+                        picture: dataPost.picture,
                         date: convertDate(postData.createdAt),
                         id: postData._id
                     }
@@ -133,7 +145,10 @@ const Post: React.FC<any> = ({ dataPost = "" }) => {
             </Head>
             <Navbar />
             <div className={styles.page_post}>
-                <div className={styles.header} style={{ backgroundImage: `url(${post?.picture})` }}>
+                <div 
+                    className={styles.header} 
+                    style={{ backgroundImage: `url(${post?.picture})` }}
+                >
                     <span>
                         <p>{post?.date} by {post?.author}</p>
                         <h4>{post?.title}</h4>
@@ -141,7 +156,10 @@ const Post: React.FC<any> = ({ dataPost = "" }) => {
                 </div>
                 <div className={styles.body}>
                     <div className={styles.post}>
-                        <img src={post?.picture} alt="" />
+                        {
+                            post?.picture &&
+                                <img src={post?.picture} alt={post?.title}/>
+                        }
                         <article className={styles.text_post}>
                             {
                                 post?.paragraphs.map((paragraph, index) => (

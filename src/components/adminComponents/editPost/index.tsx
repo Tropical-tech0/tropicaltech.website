@@ -54,7 +54,7 @@ const EditPost: React.FC = () => {
         //update posts list through od delete action or edit
         const alterPosts = () => {
 
-            let filter = backupPosts.filter((post: any) => post._id !== updatePost.post?._id)
+            let filter = backupPosts.filter((post: any) => post._id !== updatePost?.post?._id)
 
             if(updatePost?.type === "edit"){
                 filter = [...filter, updatePost?.post] as any
@@ -103,9 +103,12 @@ const EditPost: React.FC = () => {
                             justifyContent: "center",
                             alignItems: "center"
                         }}
-                        >
+                        >   
                             <LoaderTwo />
                         </div>
+                        :
+                        allPosts.length === 0 ?
+                            <div className={styles.no_posts}>No posts</div>
                         :
                         allPosts.map((post: any, index: number) => (
                             <div
@@ -113,7 +116,7 @@ const EditPost: React.FC = () => {
                                 key={index}
                                 onClick={() => setCardEdit(post)}
                             >
-                                <img src={post.picture} alt={post.title} />
+                                <img src={post.picture || "/img/post-icon.png"} alt={post.title} />
                                 <span>
                                     <h4>{post.title.length > 41 ? post.title.slice(0, 41) + "..." : post.title}</h4>
                                     <span className={styles.texts}>
