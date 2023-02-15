@@ -3,30 +3,50 @@ import styles from './index.module.css'
 
 //components
 import Loader from '../loader'
+import CardAlertContact from '../contactComponents/cardAlertContact'
 
 //api
 import Api from '@/services/api'
-import CardAlertContact from '../contactComponents/cardAlertContact'
+
+//utils
+import { convertDate } from '@/utils/convertDate'
 
 type FormComment = {
-    email?: string, 
+    email?: string,
     name?: string,
     website?: string,
     comment?: string
 }
 
 type AlertMessages = {
-    message: string, 
+    message: string,
     type: "error" | "success"
 }
 
+type Props = {
+    postId: string | any
+}
+
+//component comment 
+const Comment: React.FC<{commentData: any}> = ({commentData}) => (
+    <span className={styles.comment}>
+        <div>
+            <img src="/img/user.png" alt="user-icon" />
+        </div>
+        <div>
+            <h4>{commentData.name}</h4>
+            <p>{commentData.comment}</p>
+            <small>{convertDate(commentData.createdAt)}</small>
+        </div>
+    </span>
+)
 
 //comments card - blog
-const Comments: React.FC<any> = ({postId}) => {
+const Comments: React.FC<Props> = ({ postId }) => {
 
-    const [postData, setPostData] = React.useState<any>({})
     const [load, setLoad] = React.useState<boolean>(false)
-    const [alertMsgs, setAlertMsgs] = React.useState<any>([])
+    const [alertMsgs, setAlertMsgs] = React.useState<AlertMessages[] | []>([])
+    const [comments, setComments] = React.useState<any>([])
     const [form, setForm] = React.useState<FormComment>({
         email: "",
         name: "",
@@ -34,38 +54,67 @@ const Comments: React.FC<any> = ({postId}) => {
         comment: ""
     })
 
+    React.useEffect(() => {
+
+        //get post's comments by post id
+        const getComments = async () => {
+            
+            let id = postId || location.pathname.split('/').pop()
+            
+            try {
+                var response = await Api.get('/read-comments?postId='+id)
+                console.log(response.data)
+                if(response.status === 200 && response.data.success){
+                    return setComments(response.data.comments)
+                }
+
+                setComments([])
+
+            } catch (error) {
+                console.log(error)
+                setComments([])
+            }
+
+        }
+        getComments()
+ 
+    }, [postId])
+
     const sendComment = async () => {
         setLoad(true)
-        
+
         let errors: AlertMessages[] = []
 
-        if(!form.email || typeof form.email === undefined || form.email === null ){
-            errors.push({message: "Invalid email", type: "error"})
+        if (!form.email || typeof form.email === undefined || form.email === null) {
+            errors.push({ message: "Invalid email", type: "error" })
         }
-        if(!form.name || typeof form.name === undefined || form.name === null ){
-            errors.push({message: "Invalid name", type: "error"})
+        if (!form.name || typeof form.name === undefined || form.name === null) {
+            errors.push({ message: "Invalid name", type: "error" })
         }
-        if(!form.comment || typeof form.comment === undefined || form.comment === null ){
-            errors.push({message: "Invalid comment", type: "error"})
+        if (!form.comment || typeof form.comment === undefined || form.comment === null) {
+            errors.push({ message: "Invalid comment", type: "error" })
         }
 
-        if(errors.length > 0){
+        if (errors.length > 0) {
             setLoad(false)
             setAlertMsgs(errors)
             return
         }
 
         try {
-            let response = await Api.post('/create-comment', {...form, postId})
+            let response = await Api.post('/create-comment', { ...form, postId })
             setLoad(false)
-            if(response.status === 200 && response.data.success){
-                setAlertMsgs([{message: "Comment created", type: "success"}])
-                setForm({email: "", name: "", website: "", comment: ""})
+            if (response.status === 200 && response.data.success) {
+                setAlertMsgs([{ message: "Comment created", type: "success" }])
+                setForm({ email: "", name: "", website: "", comment: "" })
+                
+                //add comment
+                setComments([{...form, createdAt: new Date()}, ...comments])
             }
         } catch (error) {
             setLoad(false)
             console.log(error)
-            setAlertMsgs([{message: "Internal error", type: "error"}])
+            setAlertMsgs([{ message: "Internal error", type: "error" }])
         }
 
     }
@@ -80,33 +129,33 @@ const Comments: React.FC<any> = ({postId}) => {
                 </div>
                 <div className={styles.body}>
                     <label style={{ marginTop: "-10px" }}>Comment *</label>
-                    <textarea 
+                    <textarea
                         rows={10}
-                        onChange={(event: any) => setForm({...form, comment: event.target.value})}
+                        onChange={(event: any) => setForm({ ...form, comment: event.target.value })}
                         value={form.comment}
                     ></textarea>
                     <div className={styles.inputs}>
                         <span>
                             <label>Name *</label>
-                            <input 
-                                type="text" 
-                                onChange={(event: any) => setForm({...form, name: event.target.value})}
+                            <input
+                                type="text"
+                                onChange={(event: any) => setForm({ ...form, name: event.target.value })}
                                 value={form.name}
-                                />
+                            />
                         </span>
                         <span>
                             <label>E-mail *</label>
-                            <input 
-                                type="text" 
-                                onChange={(event: any) => setForm({...form, email: event.target.value})}
+                            <input
+                                type="text"
+                                onChange={(event: any) => setForm({ ...form, email: event.target.value })}
                                 value={form.email}
-                                />
+                            />
                         </span>
                         <span>
                             <label>Website</label>
-                            <input 
-                                type="text" 
-                                onChange={(event: any) => setForm({...form, website: event.target.value})}
+                            <input
+                                type="text"
+                                onChange={(event: any) => setForm({ ...form, website: event.target.value })}
                                 value={form.website}
                             />
                         </span>
@@ -114,16 +163,30 @@ const Comments: React.FC<any> = ({postId}) => {
                     <button onClick={() => sendComment()}>
                         {
                             load ?
-                            <div style={{padding: "10px"}}>
-                                <Loader/>   
-                            </div>
-                            :
-                            "POST COMMENT"
+                                <div style={{ padding: "10px" }}>
+                                    <Loader />
+                                </div>
+                                :
+                                "POST COMMENT"
                         }
                     </button>
                 </div>
             </div>
-            {<CardAlertContact alertMessages={alertMsgs}/>}
+            <div className={styles.comments_list}>
+                <div className={styles.comments_list_header}>
+                    <p>Comments</p>
+                    <div className={styles.__line__}></div>
+                </div>
+                {
+                    comments.length > 0 &&
+                        comments.map((comment: any, index:number) => (
+                            <div key={index}>
+                                <Comment commentData={comment}/>
+                            </div>
+                        ))
+                }
+            </div>
+            {<CardAlertContact alertMessages={alertMsgs} />}
         </div>
     )
 }

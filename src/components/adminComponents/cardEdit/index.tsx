@@ -56,7 +56,7 @@ const CardEdit: React.FC<Props> = ({ cardEdit, setCardEdit, setAlertMsgs, setUpd
             let response = await Api.get('/delete-post?postId=' + cardEdit._id)
 
             setLoad(false)
-
+            
             if (response.status === 200 && response.data.success) {
                 setAlertMsgs([{ message: "Post deleted", type: "success" }])
                 setUpdatePost({post: cardEdit, type: "delete"})

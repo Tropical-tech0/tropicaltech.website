@@ -1,20 +1,21 @@
-.comments_card{
+.comments_card {
     background-color: #FAFAFA;
     width: 100%;
     padding: 40px 150px;
 }
 
-.form_comment{
+.form_comment {
     max-width: 70%;
 }
 
-.header{
+.header {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-.header h4{
+
+.header h4 {
     font-family: "Raleway", sans-serif;
     font-weight: 900;
     color: #222222;
@@ -22,66 +23,70 @@
     letter-spacing: 2px;
 }
 
-.header .__line__{
+.header .__line__ {
     height: 1px;
     width: 100%;
     background-color: lightgray;
     opacity: .3;
 }
 
-.header p{
+.header p {
     font-size: 15px;
     color: #555555;
     font-weight: 400;
 }
 
-.body{
+.body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, sans-serif;
     margin-top: 30px;
     max-width: 100%;
 }
-.body label{
+
+.body label {
     font-size: 12px;
     color: #222222;
     font-weight: 400;
 }
 
-.body textarea{
+.body textarea {
     background-color: #F5F5F5;
     max-width: 100%;
     width: 100%;
     transition: 500ms;
     outline: 0;
 }
-.body textarea:focus{
+
+.body textarea:focus {
     outline: 1px solid #80808069;
 }
 
-.body .inputs{
+.body .inputs {
     display: flex;
     gap: 10px;
     width: 100%;
     max-width: 100%;
     margin-top: 1rem;
 }
-.inputs span{
+
+.inputs span {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.inputs input{
+.inputs input {
     background-color: #F5F5F5;
     padding: 10px;
     outline: 0;
     width: 100%;
 }
-.inputs input:focus{
+
+.inputs input:focus {
     outline: 1px solid #80808069;
 }
 
-.body button{
+.body button {
     margin-top: 50px;
     border-radius: 24px;
     padding: 0px 30px;
@@ -96,32 +101,87 @@
     transition: 1s;
 }
 
-.body button:hover{
+.body button:hover {
     background-color: #cf2e2e;
 }
 
-@media screen and (max-width: 1100px){
-    .comments_card{
+.comments_list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 1rem;
+    max-width: 70%;
+}
+
+.comments_list_header {
+    font-family: "Raleway", sans-serif;
+}
+
+.comments_list_header .__line__ {
+    width: 100%;
+    height: 1px;
+    /* background-color: gray; */
+    margin: 1rem 0;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, .2), rgba(0, 0, 0, .1));
+}
+
+.comment {
+    display: flex;
+    gap: 1rem;
+}
+
+.comment img {
+    width: 30px;
+    height: 30px;
+}
+
+.comment h4 {
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 4px
+}
+
+.comment p {
+    font-family: "Raleway", sans-serif;
+    font-size: 12px;
+    color: #555555;
+}
+
+.comment small {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+}
+
+@media screen and (max-width: 1100px) {
+    .comments_card {
         padding: 40px 50px;
     }
 }
 
-@media screen and (max-width: 790px){
-    .form_comment{
+@media screen and (max-width: 790px) {
+    .form_comment {
+        max-width: 100%;
+    }
+
+    .comments_list {
         max-width: 100%;
     }
 }
 
-@media screen and (max-width: 480px){
-    .inputs{
+@media screen and (max-width: 480px) {
+    .inputs {
         flex-direction: column;
     }
 }
-@media screen and (max-width: 380px){
-    .comments_card{
+
+@media screen and (max-width: 380px) {
+    .comments_card {
         padding: 40px 20px;
     }
-    .form_comment button{
+
+    .form_comment button {
         width: 100%;
     }
 }

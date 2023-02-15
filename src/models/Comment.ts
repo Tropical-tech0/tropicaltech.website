@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
-import dbConnect from "@/utils/database";
 
 const Schema = mongoose.Schema 
-dbConnect()
 
 //comment model
 const CommentModel = new Schema({

@@ -3,8 +3,8 @@ import styles from './index.module.css'
 import TextField from '@mui/material/TextField';
 import { useTranslation } from 'react-i18next';
 
-//api mail instance
-import ApiMail from '@/services/mailService';
+//rest api
+import Api from '@/services/api';
 
 //components
 import Loader from '@/components/loader';
@@ -99,7 +99,7 @@ const SectionContact: React.FC = () => {
         }
 
         try {
-            var res = await ApiMail.post('/mail-service', form)
+            var res = await Api.post('/mail-service', form)
             setLoading(false)
             if(res.status === 200){
                 setAlertMessages([{type: "success", message: successMessages[i18n.language]}])

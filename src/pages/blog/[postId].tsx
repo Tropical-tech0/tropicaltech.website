@@ -98,6 +98,8 @@ const Post: React.FC<any> = ({ dataPost }) => {
             }
 
         }
+
+        //check if the data has been pre-rendered
         if (!dataPost || typeof dataPost === undefined || dataPost === null) {
             fetchPost()
         } else {
