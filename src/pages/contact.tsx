@@ -7,6 +7,7 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import SectionContact from '@/components/contactComponents/sectionContact'
 import SectionPlaces from '@/components/contactComponents/sectionPlaces'
+import SwitcherLanguage from '@/components/switcherLanguage'
 
 const Contact: React.FC = () => {
 
@@ -27,6 +28,8 @@ const Contact: React.FC = () => {
         <SectionContact />
         <SectionPlaces/>
       </main>
+
+      <SwitcherLanguage/>
       <Footer />
     </>
   )

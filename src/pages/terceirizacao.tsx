@@ -9,6 +9,7 @@ import SectionApresentation from '@/components/terceirizacaoComponents/sectionAp
 import SectionResources from '@/components/terceirizacaoComponents/sectionResources'
 import SectionServices from '@/components/terceirizacaoComponents/sectionServices'
 import SectionCarousel from '@/components/terceirizacaoComponents/sectionCarousel'
+import SwitcherLanguage from '@/components/switcherLanguage'
 
 const Terceirizacao = () => {
   
@@ -28,6 +29,7 @@ const Terceirizacao = () => {
       <SectionCarousel/>
 
     </main>
+    <SwitcherLanguage/>
     <Footer/>
     </>
   )

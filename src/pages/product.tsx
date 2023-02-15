@@ -7,6 +7,7 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import SectionApresentation from '@/components/productComponents/sectionApresentation'
 import SectionProducts from '@/components/productComponents/sectionProducts'
+import SwitcherLanguage from '@/components/switcherLanguage'
 
 const Product = () => {
 
@@ -29,6 +30,7 @@ const Product = () => {
         <SectionProducts />
       </main>
 
+      <SwitcherLanguage/>
       <Footer />
     </>
   )

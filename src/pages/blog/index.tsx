@@ -7,6 +7,7 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import SectionApresentation from '@/components/blogComponents/sectionApresentation'
 import SectionPosts from '@/components/blogComponents/sectionPosts'
+import SwitcherLanguage from '@/components/switcherLanguage'
 
 //api
 import Api from '@/services/api'
@@ -25,7 +26,8 @@ export async function getStaticProps(){
   return{
     props:{
       dataPosts: response.data.posts
-    }
+    },
+    revalidate: 30
   }
 
 }
@@ -49,6 +51,8 @@ const Blog: React.FC<any> = ({ dataPosts }) => {
         <SectionApresentation/>
         <SectionPosts dataPosts={dataPosts}/>
       </main>
+
+      <SwitcherLanguage/>
       <Footer/>
     </>
   )

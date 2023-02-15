@@ -8,6 +8,7 @@ import SectionProjects from '@/components/homeComponents/sectionProjects'
 import SectionMethods from '@/components/homeComponents/sectionMethods'
 import SectionAbout from '@/components/homeComponents/sectionAbout'
 import Footer from '@/components/footer'
+import SwitcherLanguage from '@/components/switcherLanguage'
 
 //home page
 export default function Home() {
@@ -32,6 +33,8 @@ export default function Home() {
         <SectionMethods />
         <SectionAbout />
       </main>
+
+      <SwitcherLanguage/>
       <Footer />
     </>
   )
