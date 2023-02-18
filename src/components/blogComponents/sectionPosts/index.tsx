@@ -77,7 +77,7 @@ const SectionPosts: React.FC<any> = ({ dataPosts }) => {
               <Link href={`blog/${post._id}`}>
                 <h4>{post.title}</h4>
               </Link>
-              <p>{post.content.slice(0, 100)+"..."}</p>
+              <p>{post.description}</p>
             </span>
             <Link href={`blog/${post._id}`}>
               <div className={styles.read_more_button}>Read more</div>

@@ -87,7 +87,8 @@
 }
 
 .read_picture_container{
-    height: 400px;
+    margin-top: 50px;
+    height: 500px;
     width: 100%;
     position: relative;
 }

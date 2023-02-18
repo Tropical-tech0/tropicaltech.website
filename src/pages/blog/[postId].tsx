@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/Post.module.css'
 import Head from 'next/head'
+import 'react-quill/dist/quill.snow.css';
 
 //components
 import Navbar from '@/components/navbar'
@@ -17,10 +18,10 @@ import { convertDate } from '@/utils/convertDate'
 type Post = {
     author: string,
     title: string,
-    paragraphs: string[],
     picture: string,
     date: string,
-    id: string
+    id: string,
+    content: string
 }
 
 export async function getStaticProps(context: any) {
@@ -86,10 +87,10 @@ const Post: React.FC<any> = ({ dataPost }) => {
                     let filterPost: Post = {
                         author: postData.author,
                         title: postData.title,
-                        paragraphs: postData.content.split('\n\n'),
                         picture: dataPost.picture,
                         date: convertDate(postData.createdAt),
-                        id: postData._id
+                        id: postData._id,
+                        content: postData.content
                     }
                     setPost(filterPost)
                 }
@@ -106,10 +107,10 @@ const Post: React.FC<any> = ({ dataPost }) => {
             let filterPost: Post = {
                 author: dataPost.author,
                 title: dataPost.title,
-                paragraphs: dataPost.content.split("\n\n"),
                 picture: dataPost.picture,
                 date: convertDate(dataPost.createdAt),
-                id: dataPost._id
+                id: dataPost._id,
+                content: dataPost.content
             }
             setPost(filterPost)
         }
@@ -165,11 +166,9 @@ const Post: React.FC<any> = ({ dataPost }) => {
                                 <img src={post?.picture} alt={post?.title}/>
                         }
                         <article className={styles.text_post}>
-                            {
-                                post?.paragraphs.map((paragraph, index) => (
-                                    <p key={index}>{paragraph}</p>
-                                ))
-                            }
+                            <div dangerouslySetInnerHTML={{__html: post?.content} as any}>
+
+                            </div>
                         </article>
                     </div>
                     <div className={styles.info_about_post}>

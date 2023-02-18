@@ -33,3 +33,9 @@
 body{
   background-color: #ffff;
 }
+
+/* blog formats */
+blockquote{
+  border-left: 4px solid rgb(168, 162, 162);
+  padding-left: 10px;
+}

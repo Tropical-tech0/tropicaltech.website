@@ -51,8 +51,18 @@ const ReadPicture: React.FC<Props> = ({setPicture, isVisible, pictureFile}) => {
                     </div>
                 :
                     <div>
-                        <Button variant="contained" component="label">
-                            Upload
+                        <Button 
+                            variant="contained" 
+                            component="label" 
+                            style={{
+                                background: "none",
+                                boxShadow: "none"
+                            }}
+                        >
+                            <span className={styles.read_btn_text}>
+                                <img src="/img/image.png" alt="image" width={"60px"} height="60px" />
+                                <p>Upload image</p>
+                            </span>
                             <input hidden type="file" onChange={readFile} />
                         </Button>
                     </div>

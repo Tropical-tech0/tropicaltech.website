@@ -43,3 +43,12 @@
     width: 30px;
     height: 30px;
 }
+
+.read_btn_text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(136, 133, 133);
+    font-weight: 700;
+}

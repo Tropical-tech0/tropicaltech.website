@@ -10,6 +10,9 @@ const PostModel = new Schema({
     title: {    
         type: String
     },
+    description: {
+        type: String
+    },
     content: {
         type: String
     },

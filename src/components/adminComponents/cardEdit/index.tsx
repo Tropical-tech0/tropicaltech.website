@@ -9,6 +9,7 @@ import Api from '@/services/api';
 //components
 import ReadPicture from '../readPicture';
 import LoaderTwo from '@/components/loaderTwo';
+import TextEditor from '../textEditor';
 
 type Props = {
     cardEdit: any,
@@ -20,23 +21,28 @@ type Props = {
 //edit card 
 const CardEdit: React.FC<Props> = ({ cardEdit, setCardEdit, setAlertMsgs, setUpdatePost }) => {
 
-    const [form, setForm] = useState<any>({
-        title: cardEdit.title,
-        content: cardEdit.content
-    })
+    const [title, setTitle] = useState<string>(cardEdit.title)
     const [picture, setPicture] = useState<string>("")
     const [load, setLoad] = useState<boolean>(false)
     const [modalDelete, setModalDelete] = useState<boolean>(false)
-    
+
+    //editor state
+    const [editorState, setEditorState] = useState<string>(cardEdit.content)
+
     //handle edition
     const editPost = async () => {
         setLoad(true)
         try {
-            let response = await Api.post('/edit-post', { ...form, picture, postId: cardEdit._id })
+            let response = await Api.post('/edit-post', {
+                picture,
+                postId: cardEdit._id,
+                content: editorState,
+                title
+            })
             setLoad(false)
             if (response.status === 200 && response.data.success) {
                 setAlertMsgs([{ message: "Edit save", type: "success" }])
-                setUpdatePost({post: response.data.post, type: "edit"})
+                setUpdatePost({ post: response.data.post, type: "edit" })
             }
 
         } catch (error: any) {
@@ -56,18 +62,18 @@ const CardEdit: React.FC<Props> = ({ cardEdit, setCardEdit, setAlertMsgs, setUpd
             let response = await Api.get('/delete-post?postId=' + cardEdit._id)
 
             setLoad(false)
-            
+
             if (response.status === 200 && response.data.success) {
                 setAlertMsgs([{ message: "Post deleted", type: "success" }])
-                setUpdatePost({post: cardEdit, type: "delete"})
+                setUpdatePost({ post: cardEdit, type: "delete" })
             }
-            
+
         } catch (error: any) {
             setLoad(false)
             console.log(error)
-            if(error.status === 502){
+            if (error.status === 502) {
                 setAlertMsgs([{ message: error.response.data.message, type: "error" }])
-                setUpdatePost({post: cardEdit, type: "delete"})
+                setUpdatePost({ post: cardEdit, type: "delete" })
                 return
             }
             setAlertMsgs([{ message: error.response.data.message, type: "error" }])
@@ -86,23 +92,18 @@ const CardEdit: React.FC<Props> = ({ cardEdit, setCardEdit, setAlertMsgs, setUpd
             </div>
             <div className={styles.body}>
                 <div className={styles.form}>
+                    
                     <TextField
                         id="filled-basic"
                         label="Post Title"
                         variant="filled"
-                        onChange={(event: any) => setForm({ ...form, title: event.target.value })}
-                        value={form.title}
+                        onChange={(event: any) => setTitle(event.target.value)}
+                        value={title}
                         style={{ width: "100%" }}
                     />
-                    <TextField
-                        id="filled-basic"
-                        label="Post Content"
-                        variant="filled"
-                        multiline
-                        onChange={(event: any) => setForm({ ...form, content: event.target.value })}
-                        value={form.content}
-                        style={{ width: "100%" }}
-                    />
+
+                    <TextEditor setEditorState={setEditorState} editorState={editorState} />
+
                     <div className={styles.read_picture_container}>
                         <div className={styles.read_picture_card}>
                             <ReadPicture setPicture={setPicture} isVisible={true} pictureFile={cardEdit.picture} />

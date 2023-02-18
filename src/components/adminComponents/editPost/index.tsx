@@ -120,7 +120,7 @@ const EditPost: React.FC = () => {
                                 <span>
                                     <h4>{post.title.length > 41 ? post.title.slice(0, 41) + "..." : post.title}</h4>
                                     <span className={styles.texts}>
-                                        <p>{post.content.slice(0, 31) + "..."}</p>
+                                        <p>{post.description.slice(0, 31) + "..."}</p>
                                         <small>{convertDate(post.createdAt)}</small>
                                     </span>
                                 </span>

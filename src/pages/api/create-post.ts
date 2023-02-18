@@ -20,7 +20,7 @@ export default async function createPost(req: NextApiRequest, res: NextApiRespon
     
     await dbConnect()
 
-    var { author, title, content, picture } = req.body
+    var { author, description, title, content, picture } = req.body
     
     try {
 
@@ -28,7 +28,8 @@ export default async function createPost(req: NextApiRequest, res: NextApiRespon
             title,
             author: "admin",
             content,
-            picture
+            picture,
+            description
         })
 
         res.status(200).json({ success: true, message: "Post created", post: response})

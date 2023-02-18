@@ -5,14 +5,13 @@ import styles from './index.module.css'
 import ReadPicture from '../readPicture'
 import Loader from '@/components/loader'
 import CardAlertContact from '@/components/contactComponents/cardAlertContact'
+import TextEditor from '../textEditor'
 
 //rest api
 import Api from '@/services/api'
 
-type FormPost = {
-    title?: string,
-    content?: string
-}
+//utils
+import ExtractTextFromHTML from '@/utils/extractTextFromHTML'
 
 type AlertMessages = {
     message: string, 
@@ -23,10 +22,8 @@ type AlertMessages = {
 const CreatePost: React.FC = () => {
 
     const [picture, setPicture] = useState<string>("")
-    const [form, setForm] = useState<FormPost | undefined>({
-        title: "",
-        content: ""
-    })
+    const [title, setTitle] = useState<string>("")
+    const [editorState, setEditorState] = useState("")
     const [messages, setMessages] = useState<AlertMessages[]>([])
     const [load, setLoad] = useState<boolean>(false)
 
@@ -43,11 +40,12 @@ const CreatePost: React.FC = () => {
         } as any
 
         //validate form
-        Object.entries(form as FormPost).forEach(([key, value]) => {
-            if(!value || typeof value === undefined || value === null){
-                errors.push({message: messageErrors[key], type: "error"})
-            }
-        })
+        if(!title || typeof title === undefined || title === null){
+            errors.push({message: messageErrors["title"], type: "error"})
+        }
+        if(!editorState || typeof editorState === undefined || editorState === null){
+            errors.push({message: messageErrors["content"], type: "error"})
+        }
 
         if(errors.length > 0){
             setLoad(false)
@@ -57,7 +55,12 @@ const CreatePost: React.FC = () => {
 
         try {
             
-            let response = await Api.post('/create-post', {...form, picture})
+            let response = await Api.post('/create-post', {
+                title, 
+                content: editorState, 
+                picture,
+                description: ExtractTextFromHTML(editorState).slice(0, 100)
+            })
 
             setLoad(false)
 
@@ -93,29 +96,25 @@ const CreatePost: React.FC = () => {
                 <CardAlertContact alertMessages={messages}/>
             }
             <div className={styles.card_one}>
+                <div className={styles.content}>
+                    <TextEditor setEditorState={setEditorState}/>
+                </div>
+            </div>
+            <div className={styles.card_two}>
                 <div className={styles.title}>
                     <textarea 
                         rows={5} 
                         placeholder="Add Title"
-                        onChange={(event: any) => setForm({...form, title: event.target.value})}
-                        value={form?.title}
+                        onChange={(event: any) => setTitle(event.target.value)}
+                        value={title}
                     >
                     </textarea>
                 </div>
-                <div className={styles.content}>
-                    <textarea 
-                        rows={25} 
-                        placeholder="Add content post"
-                        onChange={(event: any) => setForm({...form, content: event.target.value})}
-                        value={form?.content}
-                    >
-                    </textarea>
-                </div>
-            </div>
-            <div className={styles.card_two}>
                 <div className={styles.picture_card}>
                     <ReadPicture setPicture={setPicture}/>
                 </div>
+            </div>
+            <div className={styles.card_three}>
                 <div className={styles.button_card}>
                     <button onClick={() => handlePost()}>Publish</button>
                 </div>
