@@ -119,4 +119,13 @@
     .delete_modal{
         width: 200px;
     }
+    .read_picture_container{
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 330px){
+    .read_picture_container{
+        margin-top: 180px;
+    }
 }

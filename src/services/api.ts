@@ -5,5 +5,4 @@ const Api: AxiosInstance = axios.create({
     baseURL: "https://tropical-tech.netlify.app/api",
 })
 
-
 export default Api

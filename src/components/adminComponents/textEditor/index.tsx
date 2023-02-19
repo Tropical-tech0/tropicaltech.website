@@ -54,8 +54,8 @@ const TextEditor: React.FC<Props> = ({ setEditorState, editorState }) => {
             onChange={setText}
             modules={modules}
             formats={formats}
-            placeholder="Digite aqui..."
-            style={{ height: "100%", maxHeight: "500px" }}
+            placeholder="Type here..."
+            style={{ width: "100%" }}
         />
 
     );

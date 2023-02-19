@@ -31,8 +31,10 @@ const LoginAdmin: React.FC = () => {
 
     const { login } = useAuthAdmin()
 
-    const auth = async () => {
+    const auth = async (event?: React.FormEvent<HTMLFormElement>) => {
         setLoad(true)
+
+        event?.preventDefault()
 
         let errors: any = []
 
@@ -40,7 +42,7 @@ const LoginAdmin: React.FC = () => {
             username: "Username invalid",
             password: "Password invalid"
         } as any
-
+ 
         //validate form
         Object.entries(form).forEach(([key, value]) => {
             if (!value || typeof value === undefined || value === null) {
@@ -92,33 +94,35 @@ const LoginAdmin: React.FC = () => {
                         </span>
                     </div>
                     <div className={styles.body}>
-                        <TextField
-                            id="outlined-basic"
-                            label="username"
-                            variant="outlined"
-                            onChange={(event: any) => setForm({ ...form, username: event.target.value })}
-                            value={form.username}
-                        />
-                        <TextField
-                            id="outlined-basic"
-                            label="password"
-                            variant="outlined"
-                            type="password"
-                            onChange={(event: any) => setForm({ ...form, password: event.target.value })}
-                            value={form.password}
-                        />
-                        <div className={styles.button_card}>
-                            <Button variant="contained" onClick={() => auth()}>
-                                {
-                                    load ?
-                                        <div style={{ padding: "10px" }}>
-                                            <Loader />
-                                        </div>
-                                        :
-                                        "ACCESS"
-                                }
-                            </Button>
-                        </div>
+                        <form onSubmit={(event: React.FormEvent<HTMLFormElement>) => auth(event)}>
+                            <TextField
+                                id="outlined-basic"
+                                label="username"
+                                variant="outlined"
+                                onChange={(event: any) => setForm({ ...form, username: event.target.value })}
+                                value={form.username}
+                            />
+                            <TextField
+                                id="outlined-basic"
+                                label="password"
+                                variant="outlined"
+                                type="password"
+                                onChange={(event: any) => setForm({ ...form, password: event.target.value })}
+                                value={form.password}
+                            />
+                            <div className={styles.button_card}>
+                                <Button variant="contained" onClick={() => auth()} type="submit">
+                                    {
+                                        load ?
+                                            <div style={{ padding: "10px" }}>
+                                                <Loader />
+                                            </div>
+                                            :
+                                            "ACCESS"
+                                    }
+                                </Button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
