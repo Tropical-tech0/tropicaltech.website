@@ -3,7 +3,7 @@ import styles from './index.module.css'
 
 //components
 import ReadPicture from '../readPicture'
-import Loader from '@/components/loader'
+import LoadCard from '@/components/loadCard'
 import CardAlertContact from '@/components/contactComponents/cardAlertContact'
 import TextEditor from '../textEditor'
 
@@ -87,9 +87,7 @@ const CreatePost: React.FC = () => {
         <div className={styles.create_component}>
             {
                 load &&
-                    <div className={styles.loader}>
-                        <Loader/>
-                    </div>
+                    <LoadCard title='creating'/>
             }
             {
                 //card alert messages

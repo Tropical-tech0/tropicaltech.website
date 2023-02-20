@@ -1,10 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import mailer from 'nodemailer'
 import HtmlMail from "@/components/htmlMail";
-import NextCors from 'nextjs-cors'
+
+//middleware - cors
+import middleware from "@/middlewares/cors";
 
 //smtp config
-import configSMTP from '../../services/smtpConfig'
+import configSMTP from '../../services/smtpConfig';
 
 interface DataMail {
     firstName: string,
@@ -16,16 +18,9 @@ interface DataMail {
 }
 
 //endpoint - mail service
-export default async function mailService(req: NextApiRequest, res: NextApiResponse){
+async function mailService(req: NextApiRequest, res: NextApiResponse){
 
-    await NextCors(req, res, {
-        // Options
-        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-        origin: '*',
-        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-     });
-
-    var { body }: {body: DataMail} = req
+    var { body }: {body: DataMail} = req;
 
     //transporter mail service
     const smtp = mailer.createTransport({
@@ -37,23 +32,25 @@ export default async function mailService(req: NextApiRequest, res: NextApiRespo
         tls: {
             rejectUnauthorized: false
         }
-    })
+    });
 
     const mail = {
         from: body.email,
         to: configSMTP.user,
         subject: `E-mail enviado por ${body.firstName}`,
         html: HtmlMail(body)
-    }
+    };
 
     try {
-        var response: any = await smtp.sendMail(mail)
-        res.json(response)
-        smtp.close()
+        var response: any = await smtp.sendMail(mail);
+        res.json(response);
+        smtp.close();
     } catch (error) {
-        res.json(error)
-        smtp.close()
-        console.log(error)
-    }
+        res.json(error);
+        smtp.close();
+        console.log(error);
+    };
 
-}
+};
+
+export default middleware(mailService);

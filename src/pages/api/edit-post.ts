@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import mongoose from "mongoose";
-import NextCors from 'nextjs-cors'
+
+//middleware - cors
+import middleware from "@/middlewares/cors";
 
 //mongoose connect instance
 import dbConnect from "@/utils/database";
@@ -9,48 +11,43 @@ import dbConnect from "@/utils/database";
 import Post from "@/models/Post";
 
 //edit post - endpoint
-export default async function editPost(req: NextApiRequest, res: NextApiResponse) {
+async function editPost(req: NextApiRequest, res: NextApiResponse) {
 
-    await NextCors(req, res, {
-        // Options
-        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-        origin: '*',
-        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    });
+    await dbConnect();
 
-    await dbConnect()
-
-    var { postId, title, content, picture } = req.body
+    var { postId, title, content, picture } = req.body;
 
     try {
 
-        let post = await Post.findOne({ _id: postId }).exec()
+        let post = await Post.findOne({ _id: postId }).exec();
 
         if (!post) {
-            return res.status(204).json({ success: false, message: "Post not found", post: {} })
-        }
+            return res.status(204).json({ success: false, message: "Post not found", post: {} });
+        };
 
         if (title) {
-            post.title = title
-        }
+            post.title = title;
+        };
         if (content) {
-            post.content = content
-        }
+            post.content = content;
+        };
         if (picture) {
-            post.picture = picture
-        }
+            post.picture = picture;
+        };
 
-        let response = await post.save()
+        let response = await post.save();
 
         if (response) {
-            return res.status(200).json({ success: true, post: response, message: "Success" })
-        }
+            return res.status(200).json({ success: true, post: response, message: "Success" });
+        };
 
-        res.status(204).json({ success: false, message: "Error on the edition", post: {} })
+        res.status(204).json({ success: false, message: "Error on the edition", post: {} });
 
     } catch (error) {
-        console.log(error)
-        res.status(500).json({ success: false, message: "Internal error", post: {} })
-    }
+        console.log(error);
+        res.status(500).json({ success: false, message: "Internal error", post: {} });
+    };
 
-}
+};
+
+export default middleware(editPost);

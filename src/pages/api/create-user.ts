@@ -1,7 +1,9 @@
-import mongoose from "mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
 import { genSaltSync, hashSync } from "bcryptjs"
-import NextCors from 'nextjs-cors';
+import mongoose from "mongoose";
+
+//middleware - cors
+import middleware from "@/middlewares/cors";
 
 //import db
 import dbConnect from "@/utils/database";
@@ -10,39 +12,34 @@ import dbConnect from "@/utils/database";
 import User from "@/models/User";
 
 //created user admin - endpoint
-export default async function createAdmin(req: NextApiRequest, res: NextApiResponse){
+async function createAdmin(req: NextApiRequest, res: NextApiResponse){
 
-    await NextCors(req, res, {
-        // Options
-        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-        origin: '*',
-        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    });
+    await dbConnect();
 
-    await dbConnect()
+    var { username, password } = req.body;
 
-    var { username, password } = req.body
-
-    let salt = genSaltSync(10)
+    let salt = genSaltSync(10);
 
     let newUser = new User({
         username,
         password: hashSync(password, salt)
-    })
+    });
 
     try {
 
-        let response = await newUser.save() 
+        let response = await newUser.save();
 
         if(response){
-            return res.status(200).json({success: true, message: "Created", response})
-        }
+            return res.status(200).json({success: true, message: "Created", response});
+        };
 
-        res.status(200).json({message: "Error", success: false})
+        res.status(200).json({message: "Error", success: false});
 
     } catch (error) {
-        console.log(error)
-        res.status(500).json({message: "Internal error", success: false})
-    }
+        console.log(error);
+        res.status(500).json({message: "Internal error", success: false});
+    };
 
-}
+};
+
+export default middleware(createAdmin);

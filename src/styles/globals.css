@@ -39,3 +39,9 @@ blockquote{
   border-left: 4px solid rgb(168, 162, 162);
   padding-left: 10px;
 }
+.ql-font-monospace{
+  font-family: monospace;
+}
+.ql-font-serif{
+  font-family: serif;
+}

@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import mongoose from "mongoose";
-import NextCors from 'nextjs-cors'
+
+//middleware - cors
+import middleware from "@/middlewares/cors";
 
 //mongoose connect
 import dbConnect from "@/utils/database";
@@ -9,18 +11,11 @@ import dbConnect from "@/utils/database";
 import Post from "@/models/Post";
 
 //create post - endpoint
-export default async function createPost(req: NextApiRequest, res: NextApiResponse) {
-    
-    await NextCors(req, res, {
-        // Options
-        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-        origin: '*',
-        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    });
-    
-    await dbConnect()
+async function createPost(req: NextApiRequest, res: NextApiResponse) {
 
-    var { author, description, title, content, picture } = req.body
+    await dbConnect();
+
+    var { author, description, title, content, picture } = req.body;
     
     try {
 
@@ -30,12 +25,14 @@ export default async function createPost(req: NextApiRequest, res: NextApiRespon
             content,
             picture,
             description
-        })
+        });
 
-        res.status(200).json({ success: true, message: "Post created", post: response})
+        res.status(200).json({ success: true, message: "Post created", post: response});
     } catch (error) {
-        console.log(error)
-        res.status(500).json({ success: false, message: "Internal error", post: {} })
-    }
+        console.log(error);
+        res.status(500).json({ success: false, message: "Internal error", post: {} });
+    };
 
 }
+
+export default middleware(createPost);

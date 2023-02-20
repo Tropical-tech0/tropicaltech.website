@@ -8,8 +8,8 @@ import Api from '@/services/api';
 
 //components
 import ReadPicture from '../readPicture';
-import LoaderTwo from '@/components/loaderTwo';
 import TextEditor from '../textEditor';
+import LoadCard from '@/components/loadCard';
 
 type Props = {
     cardEdit: any,
@@ -123,9 +123,7 @@ const CardEdit: React.FC<Props> = ({ cardEdit, setCardEdit, setAlertMsgs, setUpd
             </div>
             {
                 load &&
-                <div className={styles.loader}>
-                    <LoaderTwo />
-                </div>
+                    <LoadCard title='editing'/>
             }
             {
                 modalDelete &&
