@@ -72,7 +72,7 @@
     /* max-height: 400px; */
     height: auto;
 }
-
+ 
 .post article p {
     font-size: 15px;
     font-weight: 400;
@@ -81,7 +81,7 @@
 }
 .post article ol{
     padding-left: 1rem;
-}
+} 
 
 .info_about_post {
     flex: .6;

@@ -15,6 +15,15 @@ const SectionProducts = () => {
             {
                 cards.map((item, index: number) => (
                     <div className={styles.card} key={index}>
+                        <div 
+                            className={styles.img_card}
+                            style={{
+                                backgroundImage: `url(${item.imgUrl})`,
+                                order: item.orderImg
+                            }}
+                        >
+
+                        </div>
                         <div className={styles.info} style={{order: (item.orderImg === '1' ? "2" : "1")}}>
                             <h4>{t(item.title)}</h4>
                             <p>{t(item.descriptionTop)}</p>
@@ -29,15 +38,6 @@ const SectionProducts = () => {
                                 </ul>
                             </span>
                             <p>{t(item.descriptionBottom)}</p>
-                        </div>
-                        <div 
-                            className={styles.img_card}
-                            style={{
-                                backgroundImage: `url(${item.imgUrl})`,
-                                order: item.orderImg
-                            }}
-                        >
-
                         </div>
                     </div>
                 ))

@@ -63,7 +63,7 @@ const Comments: React.FC<Props> = ({ postId }) => {
             
             try {
                 var response = await Api.get('/read-comments?postId='+id)
-                console.log(response.data)
+
                 if(response.status === 200 && response.data.success){
                     return setComments(response.data.comments)
                 }

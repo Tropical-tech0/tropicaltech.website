@@ -28,6 +28,8 @@ const TextEditor: React.FC<Props> = ({ setEditorState, editorState }) => {
         'bullet',
         'indent',
         'link',
+        'style',
+        'clean'
     ];
 
     useEffect(() => {
@@ -38,14 +40,13 @@ const TextEditor: React.FC<Props> = ({ setEditorState, editorState }) => {
         toolbar: [
             [{ header: [1, 2, false] }],
             [{ font: [] }],
-            [{ size: ['small', false, 'large', 'huge'] }],
             ['bold', 'italic', 'underline', 'strike'],
-            [{ header: 1 }, { header: 2 }, 'blockquote', 'code-block'],
+            [{ header: 1 }, { header: 2 }, 'blockquote'],
             [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
             ['link'],
-            ['clean'],
-        ],
-    };
+            ['clean']
+        ]
+    } ;
 
     return (
 
