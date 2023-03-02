@@ -1,6 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Tropical Tech website
+
+website built with React library and Next framework, using typeScript
 
 First, run the development server:
 
@@ -12,27 +14,36 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## API settings
 
-## Learn More
+blog RESTful api
 
-To learn more about Next.js, take a look at the following resources:
+nextJS - api
+mongoose - orm library
+mongoDB - database
+jsonwebtoken - library for managing authentication through jwt token
+nextjs-cors - cors policy
+nodemailer - email library
+bcryptjs - hash of passwords
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+data format: JSON
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+endpoints:
 
-## Deploy on Vercel
+-"/api/check-jwt": check validate of a jwt token
+-"/api/create-comment": create comment of a post
+-"/api/read-comments": get all comments of a post
+-"/api/create-post": create post
+-"/api/create-user": create a admin user - not route not accessible 
+-"/api/delete-post": delete a post
+-"/api/edit-post": edit a post
+-"/api/login": admin login
+-"/api/mail-service": sending emails
+-"/api/read-posts": get all posts of database
+-"/api/read-post": get one post of database by post id
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+middlewares:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+handler cors policy
