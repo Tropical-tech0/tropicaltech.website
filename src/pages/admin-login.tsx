@@ -5,10 +5,6 @@ import styles from '../styles/adminLogin.module.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-//components
-import Navbar from '@/components/navbar'
-import Footer from '@/components/footer'
-
 //use context admin
 import useAuthAdmin from '@/contexts/useAuthAdmin';
 import CardAlertContact from '@/components/contactComponents/cardAlertContact';
@@ -84,7 +80,6 @@ const LoginAdmin: React.FC = () => {
             <Head>
                 <title>Tropical Tech | Login</title>
             </Head>
-            <Navbar />
             <div className={styles.login_component}>
                 <div className={styles.login_card}>
                     <div className={styles.header}>
@@ -127,7 +122,6 @@ const LoginAdmin: React.FC = () => {
                 </div>
             </div>
             {<CardAlertContact alertMessages={alertMsgs} />}
-            <Footer />
         </>
     )
 }
